@@ -129,7 +129,7 @@ class Level:
                 w=all_units_count,
                 t=weather_effect,
                 z=zone_effect,
-                alpha=2.0,
+                alpha=3.0,
                 beta=1.0,
             )
 
