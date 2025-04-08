@@ -1,5 +1,4 @@
 from components.unit import Unit
-from components.group_visual import GroupVisual, Color
 import uuid
 from shapely.geometry import Point
 from shapely.ops import unary_union
@@ -9,10 +8,9 @@ class Group:
     units: list[Unit]
     uid: uuid.UUID
 
-    def __init__(self, group_visual: GroupVisual):
+    def __init__(self):
         self.units = []
         self.uid = uuid.uuid4()
-        self.group_visual = group_visual
 
     def add_unit(self, unit: Unit):
         if unit not in self.units:

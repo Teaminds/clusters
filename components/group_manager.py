@@ -1,32 +1,15 @@
 import uuid
 from components.group import Group
-from components.group_visual import GroupVisual, Color
 from components.unit import Unit
 
 
 class GroupManager:
     groups: dict[uuid.UUID, Group] = {}
-    group_visuales: list[GroupVisual] = []
     _id_counter: int = 0
-    for color in list(Color):
-        group_visuales.append(GroupVisual(color=color))
-    used_group_visuales = []
 
     def __init__(self, units: list[Unit] = None):
         self.groups = {}
-        self.group_visuales = []
-        for color in list(Color):
-            self.group_visuales.append(GroupVisual(color=color))
-        _id_counter = 0
         self.refresh_groups(units)
-
-    def choise_group_visual(self) -> GroupVisual:
-        for group_visual in self.group_visuales:
-            if group_visual not in self.used_group_visuales:
-                self.used_group_visuales.append(group_visual)
-                return group_visual
-        self.used_group_visuales.clear()
-        return self.choise_group_visual()
 
     def get_distance(self, unit1: Unit, unit2: Unit) -> float:
         return ((unit1.x - unit2.x) ** 2 + (unit1.y - unit2.y) ** 2) ** 0.5
@@ -74,11 +57,11 @@ class GroupManager:
                             unit_group.remove_unit(unit)
                             if len(unit_group.units) == 0:
                                 del self.groups[unit_group.uid]
-                            unit_group = Group(group_visual=self.choise_group_visual())
+                            unit_group = Group()
                             unit_group.add_unit(unit)
                             self.groups[unit_group.uid] = unit_group
                     else:
-                        unit_group = Group(group_visual=self.choise_group_visual())
+                        unit_group = Group()
                         unit_group.add_unit(unit)
                         self.groups[unit_group.uid] = unit_group
 
