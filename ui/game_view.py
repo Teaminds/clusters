@@ -60,9 +60,8 @@ class GameView(arcade.View):
                     y,
                     unit.body_radius,
                     unit.color.rgb,
+                    unit.outline_color.rgb,
                 )
-                # arcade.draw_circle_filled(x, y, unit.body_radius, unit.color.rgb, 1)
-                # arcade.draw_circle_outline(x, y, unit.body_radius, arcade.color.BLACK, 1)
             for unit in self.level.units:
                 arcade.draw_text(
                     round(self.level.calculate_unit_income(unit), 2),

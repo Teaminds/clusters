@@ -2,7 +2,7 @@ from components.unit import Unit
 from components.group_manager import GroupManager
 from components.unit_color import UnitColor
 from components.unit_shape import UnitShape
-from components.unit_outline import UnitOutline
+from components.unit_outline_color import UnitOutlineColor
 from components.unit_fill import UnitFill
 from components.utils import Utils
 
@@ -57,11 +57,11 @@ class Level:
         return len(uniques)
 
     @property
-    def unique_outlines_count(self) -> int:
+    def unique_outline_colors_count(self) -> int:
         uniques = []
         for unit in self.units:
-            if unit.outline.value not in uniques:
-                uniques.append(unit.outline.value)
+            if unit.outline_color.value not in uniques:
+                uniques.append(unit.outline_color.value)
         return len(uniques)
 
     @property
@@ -88,12 +88,14 @@ class Level:
         if unit.dragged is False:
             income += self.calculate_trait_income(unit, unit.color)
             income += self.calculate_trait_income(unit, unit.shape)
-            income += self.calculate_trait_income(unit, unit.outline)
+            income += self.calculate_trait_income(unit, unit.outline_color)
             income += self.calculate_trait_income(unit, unit.fill)
         return income
 
     def calculate_trait_income(
-        self, unit: Unit, trait: UnitColor | UnitShape | UnitShape | UnitFill
+        self,
+        unit: Unit,
+        trait: UnitColor | UnitShape | UnitShape | UnitFill | UnitOutlineColor,
     ) -> float:
         if unit.dragged is False:
             group = self.group_manager.groups[unit.group_uid]
@@ -109,10 +111,10 @@ class Level:
                 unique_count_in_group = group.unique_shapes_count
                 unique_count_in_level = self.unique_shapes_count
                 trait_base_income = unit.shape.income
-            elif trait == unit.outline:
-                unique_count_in_group = group.unique_outlines_count
-                unique_count_in_level = self.unique_outlines_count
-                trait_base_income = unit.outline.income
+            elif trait == unit.outline_color:
+                unique_count_in_group = group.unique_outline_colors_count
+                unique_count_in_level = self.unique_outline_colors_count
+                trait_base_income = unit.outline_color.income
             elif trait == unit.fill:
                 unique_count_in_group = group.unique_fills_count
                 unique_count_in_level = self.unique_fills_count

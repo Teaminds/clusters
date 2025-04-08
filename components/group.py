@@ -41,11 +41,11 @@ class Group:
         return len(uniques)
 
     @property
-    def unique_outlines_count(self) -> int:
+    def unique_outline_colors_count(self) -> int:
         uniques = []
         for unit in self.units:
-            if unit.outline.value not in uniques:
-                uniques.append(unit.outline.value)
+            if unit.outline_color.value not in uniques:
+                uniques.append(unit.outline_color.value)
         return len(uniques)
 
     @property
