@@ -1,0 +1,57 @@
+from components.unit import Unit
+from components.group_visual import GroupVisual, Color
+import uuid
+from shapely.geometry import Point
+from shapely.ops import unary_union
+
+
+class Group:
+    units: list[Unit]
+    uid: uuid.UUID
+
+    def __init__(self, group_visual: GroupVisual):
+        self.units = []
+        self.uid = uuid.uuid4()
+        self.group_visual = group_visual
+
+    def add_unit(self, unit: Unit):
+        if unit not in self.units:
+            self.units.append(unit)
+            unit.group_uid = self.uid
+
+    def remove_unit(self, unit: Unit):
+        if unit in self.units:
+            self.units.remove(unit)
+            unit.group_uid = None
+
+    @property
+    def unique_colors_count(self) -> int:
+        uniques = []
+        for unit in self.units:
+            if unit.color.value not in uniques:
+                uniques.append(unit.color.value)
+        return len(uniques)
+
+    @property
+    def unique_shapes_count(self) -> int:
+        uniques = []
+        for unit in self.units:
+            if unit.shape.value not in uniques:
+                uniques.append(unit.shape.value)
+        return len(uniques)
+
+    @property
+    def unique_outlines_count(self) -> int:
+        uniques = []
+        for unit in self.units:
+            if unit.outline.value not in uniques:
+                uniques.append(unit.outline.value)
+        return len(uniques)
+
+    @property
+    def unique_fills_count(self) -> int:
+        uniques = []
+        for unit in self.units:
+            if unit.fill.value not in uniques:
+                uniques.append(unit.fill.value)
+        return len(uniques)
