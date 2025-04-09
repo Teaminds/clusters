@@ -1,7 +1,7 @@
 import arcade
 from components import level
 from levels.testo_3 import get_level
-from ui.drawer import draw_shape_filled
+from ui.drawer import draw_shape_filled, draw_styled_outline, make_shape
 
 # print(level)
 SCREEN_WIDTH = 800
@@ -54,13 +54,13 @@ class GameView(arcade.View):
                 x = unit.x
                 y = unit.y
                 # BODY
+                points = make_shape(unit.shape.value, x, y, unit.body_radius)
                 draw_shape_filled(
-                    unit.shape.value,
-                    x,
-                    y,
-                    unit.body_radius,
+                    points,
                     unit.color.rgb,
-                    unit.outline_color.rgb,
+                )
+                draw_styled_outline(
+                    points, unit.outline.value, unit.outline_color.rgb, 4
                 )
             for unit in self.level.units:
                 arcade.draw_text(
@@ -90,12 +90,12 @@ class GameView(arcade.View):
                 )
         elif self.state == "win":
             arcade.draw_text(
-                "🎉 Победа!", 400, 300, arcade.color.GREEN_YELLOW, 30, anchor_x="center"
+                "🎉 Победа!", 500, 360, arcade.color.GREEN_YELLOW, 30, anchor_x="center"
             )
             arcade.draw_text(
                 "Нажмите R чтобы начать заново",
-                400,
-                260,
+                500,
+                300,
                 arcade.color.WHITE,
                 16,
                 anchor_x="center",
@@ -103,12 +103,12 @@ class GameView(arcade.View):
 
         elif self.state == "lose":
             arcade.draw_text(
-                "💀 Поражение", 400, 300, arcade.color.RED, 30, anchor_x="center"
+                "💀 Поражение", 500, 360, arcade.color.RED, 30, anchor_x="center"
             )
             arcade.draw_text(
                 "Нажмите R чтобы начать заново",
-                400,
-                260,
+                500,
+                300,
                 arcade.color.WHITE,
                 16,
                 anchor_x="center",

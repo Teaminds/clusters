@@ -1,5 +1,6 @@
 from components.unit_color import UnitColor, Color
 from components.unit_fill import UnitFill, Fill
+from components.unit_outline import UnitOutline, Outline
 from components.unit_outline_color import UnitOutlineColor, OutlineColor
 from components.unit_shape import UnitShape, Shape
 import uuid
@@ -23,19 +24,23 @@ class Unit:
         shape: UnitShape = None,
         color: UnitColor = None,
         fill: UnitFill = None,
+        outline: UnitOutline = None,
         outline_color: UnitColor = None,
         x: float = None,
         y: float = None,
     ):
         self.uid = uuid.uuid4()
         self.shape: UnitShape = shape or UnitShape(value=random.choice(list(Shape)))
+        self.outline: UnitOutline = outline or UnitOutline(
+            value=random.choice(list(Outline))
+        )
         self.color: UnitColor = color or UnitColor(value=random.choice(list(Color)))
         self.fill: UnitFill = fill or UnitFill(value=random.choice(list(Fill)))
         self.outline_color: UnitOutlineColor = outline_color or UnitOutlineColor(
             value=random.choice(list(OutlineColor))
         )
-        self.x: float = x or random.randint(0, 800)
-        self.y: float = y or random.randint(0, 600)
+        self.x: float = x or random.randint(50, 1150)
+        self.y: float = y or random.randint(50, 670)
         self.dragged = False
 
     def distance_to(self, point: tuple[float, float]) -> float:

@@ -5,7 +5,7 @@ from ui import game_view
 
 
 def main():
-    window = arcade.Window(800, 600, "Clusters")
+    window = arcade.Window(1200, 720, "Clusters")
     view = game_view.GameView(level=get_level())
     window.show_view(view)
     arcade.run()
