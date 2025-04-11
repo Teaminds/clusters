@@ -4,6 +4,7 @@ from components.unit_outline_color import UnitOutlineColor, OutlineColor
 from components.unit_shape import UnitShape, Shape
 from components.unit import Unit
 from components.level import Level
+from components.unit_similarity_trait import UnitSimilarityTrait
 
 
 def get_level() -> Level:
@@ -12,37 +13,14 @@ def get_level() -> Level:
         level_number=0,
         units=[
             Unit(
-                shape=UnitShape(Shape.CIRCLE),
-                color=UnitColor(Color.BLUE),
-                fill=UnitFill(Fill.PLAIN),
-                outline_color=UnitColor(OutlineColor.DARK_GRAY),
+                shape=UnitSimilarityTrait(0),
+                color=UnitSimilarityTrait(0),
+                fill=UnitSimilarityTrait(0),
+                outline=UnitSimilarityTrait(0),
+                outline_color=UnitSimilarityTrait(0),
                 x=100,
                 y=100,
-            ),
-            Unit(
-                shape=UnitShape(Shape.SQUARE),
-                color=UnitColor(Color.BLUE),
-                fill=UnitFill(Fill.PLAIN),
-                outline_color=UnitColor(OutlineColor.DARK_GRAY),
-                x=200,
-                y=100,
-            ),
-            Unit(
-                shape=UnitShape(Shape.TRIANGLE),
-                color=UnitColor(Color.BLUE),
-                fill=UnitFill(Fill.PLAIN),
-                outline_color=UnitColor(OutlineColor.DARK_GRAY),
-                x=300,
-                y=100,
-            ),
-            Unit(
-                shape=UnitShape(Shape.TRIANGLE),
-                color=UnitColor(Color.RED),
-                fill=UnitFill(Fill.PLAIN),
-                outline_color=UnitColor(OutlineColor.DARK_GRAY),
-                x=200,
-                y=200,
-            ),
+            )
         ],
         timer=60,
         goal=40,

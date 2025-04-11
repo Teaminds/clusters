@@ -1,7 +1,7 @@
 import arcade
 from components import level
 from levels.testo_3 import get_level
-from ui.drawer import draw_shape_filled, draw_styled_outline, make_shape
+from ui.drawer import draw_shape_filled, draw_styled_outline, make_shape, draw_unit
 
 # print(level)
 SCREEN_WIDTH = 800
@@ -34,7 +34,7 @@ class GameView(arcade.View):
             elif self.level.score >= self.level.goal:
                 self.state = "win"
         if self.state == "playing":
-
+            units_sprites = arcade.SpriteList()
             for unit in self.level.units:
                 x = unit.x
                 y = unit.y
@@ -54,14 +54,22 @@ class GameView(arcade.View):
                 x = unit.x
                 y = unit.y
                 # BODY
-                points = make_shape(unit.shape.value, x, y, unit.body_radius)
-                draw_shape_filled(
-                    points,
-                    unit.color.rgb,
-                )
-                draw_styled_outline(
-                    points, unit.outline.value, unit.outline_color.rgb, 4
-                )
+                # arcade.draw_circle_filled(
+                #     center_x=x,
+                #     center_y=y,
+                #     radius=unit.body_radius,
+                # )
+                # points = make_shape(unit.shape.value, x, y, unit.body_radius)
+                # draw_shape_filled(
+                #     points,
+                #     unit.color.rgb,
+                # )
+                # draw_styled_outline(
+                #     points, unit.outline.value, unit.outline_color.rgb, 4
+                # )
+                unit_sprite = draw_unit(unit, x, y)
+                units_sprites.append(unit_sprite)
+            units_sprites.draw()
             for unit in self.level.units:
                 arcade.draw_text(
                     round(self.level.calculate_unit_income(unit), 2),

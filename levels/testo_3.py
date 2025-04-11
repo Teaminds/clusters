@@ -10,72 +10,26 @@ from components.level import Level
 
 def get_level() -> Level:
     units = [
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
-        Unit(
-            fill=UnitFill(Fill.PLAIN, income=0.0),
-        ),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
+        Unit(),
     ]
 
     return Level(

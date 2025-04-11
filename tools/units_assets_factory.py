@@ -9,6 +9,7 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "../assets/units")
 SHAPE_DIR = os.path.join(BASE_DIR, "../assets/units_parts/shapes")
 TEXTURE_DIR = os.path.join(BASE_DIR, "../assets/units_parts/textures")
 OUTLINE_DIR = os.path.join(BASE_DIR, "../assets/units_parts/outlines")
+SYMBOL_DIR = os.path.join(BASE_DIR, "../assets/units_parts/symbols")
 
 # Цвета тела и обводки (RGB)
 BODY_COLORS = [
@@ -33,7 +34,9 @@ def _rgb_hex(rgb):
     return "#{:02x}{:02x}{:02x}".format(*rgb)
 
 
-def bake_unit(body_color, outline_color, shape_path, texture_path, outline_path):
+def bake_unit(
+    body_color, outline_color, shape_path, texture_path, outline_path, symbol_path
+):
     # Загрузка слоёв
     shape_original = Image.open(shape_path).convert("RGBA").resize(SIZE)
     shape_grayscale = Image.open(shape_path).convert("L").resize(SIZE)
@@ -43,7 +46,7 @@ def bake_unit(body_color, outline_color, shape_path, texture_path, outline_path)
     outline_grayscale = Image.open(outline_path).convert("L").resize(SIZE)
     outline_alpha = outline_original.getchannel("A")
     outline_mask = Image.open(outline_path).convert("L").resize(SIZE)
-
+    symbol = Image.open(symbol_path).convert("RGBA").resize(SIZE)
     # Цветная форма
     colored_body = ImageOps.colorize(
         shape_grayscale, black="#00000000", white=body_color
@@ -60,12 +63,19 @@ def bake_unit(body_color, outline_color, shape_path, texture_path, outline_path)
     masked_texture = Image.new("RGBA", SIZE, (0, 0, 0, 0))
     masked_texture.paste(texture, (0, 0), mask=shape_alpha)
 
+    r, g, b, a = symbol.split()
+    a = a.point(lambda val: int(val * 0.6))
+    symbol = Image.merge("RGBA", (r, g, b, a))
+    masked_symbol = Image.new("RGBA", SIZE, (0, 0, 0, 0))
+    masked_symbol.paste(symbol, (0, 0), mask=shape_alpha)
+
     # Цветная обводка
     outline_layer = Image.new("RGBA", SIZE, outline_color)
     outline_layer.putalpha(outline_alpha)
 
     # Финальный композит
     result = Image.alpha_composite(colored_body, masked_texture)
+    result = Image.alpha_composite(result, masked_symbol)
     result = Image.alpha_composite(result, outline_layer)
     return result
 
@@ -75,18 +85,18 @@ def main():
 
     shape_files = sorted(os.listdir(SHAPE_DIR))
     texture_files = sorted(os.listdir(TEXTURE_DIR))
-
+    outline_files = sorted(os.listdir(OUTLINE_DIR))
+    symbol_files = sorted(os.listdir(SYMBOL_DIR))
     for shape in shape_files:
         shape_file = os.path.join(SHAPE_DIR, shape)
         shape_idx = shape_files.index(shape)
-        otline_dir_final = OUTLINE_DIR + "/" + str(shape_idx)
-        outline_files = sorted(os.listdir(otline_dir_final))
-        for outline in outline_files:
-            outline_file = os.path.join(otline_dir_final, outline)
-            outline_idx = outline_files.index(outline)
-            for texture in texture_files:
-                texture_file = os.path.join(TEXTURE_DIR, texture)
-                texture_idx = texture_files.index(texture)
+        outline_file = os.path.join(OUTLINE_DIR, shape)
+        for texture in texture_files:
+            texture_file = os.path.join(TEXTURE_DIR, texture)
+            texture_idx = texture_files.index(texture)
+            for symbol in symbol_files:
+                symbol_path = os.path.join(SYMBOL_DIR, symbol)
+                symbol_idx = symbol_files.index(symbol)
                 for body_color in BODY_COLORS:
                     body_color_idx = BODY_COLORS.index(body_color)
                     body_color_hex = _rgb_hex(body_color)
@@ -100,8 +110,9 @@ def main():
                             shape_file,
                             texture_file,
                             outline_file,
+                            symbol_path,
                         )
-                        code = f"{shape_idx:02d}_{texture_idx:02d}_{outline_idx:02d}_{body_color_idx:02d}_{outline_color_idx:02d}"
+                        code = f"{shape_idx:02d}_{texture_idx:02d}_{symbol_idx:02d}_{body_color_idx:02d}_{outline_color_idx:02d}"
                         result.save(os.path.join(OUTPUT_DIR, f"{code}.png"))
 
     print("Готово!")

@@ -3,41 +3,49 @@ from components.unit_fill import UnitFill, Fill
 from components.unit_outline import UnitOutline, Outline
 from components.unit_outline_color import UnitOutlineColor, OutlineColor
 from components.unit_shape import UnitShape, Shape
+from components.unit_similarity_trait import UnitSimilarityTrait
 import uuid
 import random
 
 
 class Unit:
     uid: uuid
-    shape: UnitShape
-    color: UnitColor
-    fill: UnitFill
+    shape: UnitSimilarityTrait
+    color: UnitSimilarityTrait
+    fill: UnitSimilarityTrait
+    outline: UnitSimilarityTrait
+    outline_color: UnitSimilarityTrait
     position: tuple[int, int]
     x: float = 0.0
     y: float = 0.0
+    dragged: bool = False
     group_uid: uuid.UUID = None
     body_radius: float = 30.0
     aura_radius: float = body_radius * 1.4
 
     def __init__(
         self,
-        shape: UnitShape = None,
-        color: UnitColor = None,
-        fill: UnitFill = None,
-        outline: UnitOutline = None,
-        outline_color: UnitColor = None,
+        shape: UnitSimilarityTrait = None,
+        color: UnitSimilarityTrait = None,
+        fill: UnitSimilarityTrait = None,
+        outline: UnitSimilarityTrait = None,
+        outline_color: UnitSimilarityTrait = None,
         x: float = None,
         y: float = None,
     ):
         self.uid = uuid.uuid4()
-        self.shape: UnitShape = shape or UnitShape(value=random.choice(list(Shape)))
-        self.outline: UnitOutline = outline or UnitOutline(
-            value=random.choice(list(Outline))
+        self.shape: UnitSimilarityTrait = shape or UnitSimilarityTrait(
+            value=random.randint(0, 4)
         )
-        self.color: UnitColor = color or UnitColor(value=random.choice(list(Color)))
-        self.fill: UnitFill = fill or UnitFill(value=random.choice(list(Fill)))
-        self.outline_color: UnitOutlineColor = outline_color or UnitOutlineColor(
-            value=random.choice(list(OutlineColor))
+        self.outline: UnitSimilarityTrait = outline or UnitSimilarityTrait(
+            value=random.randint(0, 4)
+        )
+        self.color: UnitColor = color or UnitSimilarityTrait(value=random.randint(0, 4))
+        self.fill: UnitSimilarityTrait = fill or UnitSimilarityTrait(
+            value=random.randint(0, 4)
+        )
+        self.outline_color: UnitOutlineColor = outline_color or UnitSimilarityTrait(
+            value=random.randint(0, 4)
         )
         self.x: float = x or random.randint(50, 1150)
         self.y: float = y or random.randint(50, 670)

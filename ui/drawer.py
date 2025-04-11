@@ -5,6 +5,7 @@ from components.unit_shape import Shape
 from components.unit_outline_color import OutlineColor
 from components.group import Group
 from components.unit_outline import UnitOutline, Outline
+from components.unit import Unit
 
 
 def make_shape(
@@ -48,6 +49,14 @@ def make_shape(
     else:
         raise ValueError(f"Unknown shape: {shape}")
     return points
+
+
+def draw_unit(unit: Unit, x: float, y: float) -> None:
+    visual_code = f"{unit.shape.value:02d}_{unit.fill.value:02d}_{unit.outline.value:02d}_{unit.color.value:02d}_{unit.outline_color.value:02d}"
+    sprite = arcade.Sprite(path_or_texture=f"assets/units/{visual_code}.png", scale=0.5)
+    sprite.center_x = x
+    sprite.center_y = y
+    return sprite
 
 
 def draw_shape_filled(
