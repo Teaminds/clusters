@@ -59,56 +59,56 @@ def draw_unit(unit: Unit, x: float, y: float) -> None:
     return sprite
 
 
-def draw_shape_filled(
-    points: list,
-    color: Tuple[int, int, int],
-):
+# def draw_shape_filled(
+#     points: list,
+#     color: Tuple[int, int, int],
+# ):
 
-    arcade.draw_polygon_filled(points, color)
-
-
-def draw_styled_outline(points, style, color, width=1.0):
-    if len(points) < 2:
-        return
-
-    points = points + [points[0]]
-    segments = [(points[i], points[i + 1]) for i in range(len(points) - 1)]
-
-    spacing = {
-        # Outline.SOLID: (1.0, 0.0),
-        # Outline.DASHED: (6, 6),
-        # Outline.DOTTED: (2, 6),
-        # Outline.IRREGULAR: [(4, 4), (10, 2), (6, 6), (2, 8)],
-        # Outline.RARE: (4, 12),
-        Outline.SOLID: (1.0, 0.0),
-        Outline.DASHED: (8, 2),
-        Outline.DOTTED: (4, 4),
-        Outline.SUPER_RARE: (2.0, 20.0),
-        Outline.RARE: (2.0, 10.0),
-    }
-
-    for i, (p1, p2) in enumerate(segments):
-        dx, dy = p2[0] - p1[0], p2[1] - p1[1]
-        seg_length = math.hypot(dx, dy)
-        angle = math.atan2(dy, dx)
-
-        if style == Outline.SOLID:
-            arcade.draw_line(p1[0], p1[1], p2[0], p2[1], color, width)
-        else:
-            pattern = spacing[style]
-            # if style == Outline.IRREGULAR:
-            #     pattern = pattern[i % len(pattern)]
-            _draw_segmented_line(p1, angle, seg_length, pattern, color, width)
+#     arcade.draw_polygon_filled(points, color)
 
 
-def _draw_segmented_line(start, angle, length, pattern, color, width):
-    dash, gap = pattern
-    pos = 0.0
-    while pos < length:
-        end = min(dash, length - pos)
-        x1 = start[0] + math.cos(angle) * pos
-        y1 = start[1] + math.sin(angle) * pos
-        x2 = start[0] + math.cos(angle) * (pos + end)
-        y2 = start[1] + math.sin(angle) * (pos + end)
-        arcade.draw_line(x1, y1, x2, y2, color, width)
-        pos += dash + gap
+# def draw_styled_outline(points, style, color, width=1.0):
+#     if len(points) < 2:
+#         return
+
+#     points = points + [points[0]]
+#     segments = [(points[i], points[i + 1]) for i in range(len(points) - 1)]
+
+#     spacing = {
+#         # Outline.SOLID: (1.0, 0.0),
+#         # Outline.DASHED: (6, 6),
+#         # Outline.DOTTED: (2, 6),
+#         # Outline.IRREGULAR: [(4, 4), (10, 2), (6, 6), (2, 8)],
+#         # Outline.RARE: (4, 12),
+#         Outline.SOLID: (1.0, 0.0),
+#         Outline.DASHED: (8, 2),
+#         Outline.DOTTED: (4, 4),
+#         Outline.SUPER_RARE: (2.0, 20.0),
+#         Outline.RARE: (2.0, 10.0),
+#     }
+
+#     for i, (p1, p2) in enumerate(segments):
+#         dx, dy = p2[0] - p1[0], p2[1] - p1[1]
+#         seg_length = math.hypot(dx, dy)
+#         angle = math.atan2(dy, dx)
+
+#         if style == Outline.SOLID:
+#             arcade.draw_line(p1[0], p1[1], p2[0], p2[1], color, width)
+#         else:
+#             pattern = spacing[style]
+#             # if style == Outline.IRREGULAR:
+#             #     pattern = pattern[i % len(pattern)]
+#             _draw_segmented_line(p1, angle, seg_length, pattern, color, width)
+
+
+# def _draw_segmented_line(start, angle, length, pattern, color, width):
+#     dash, gap = pattern
+#     pos = 0.0
+#     while pos < length:
+#         end = min(dash, length - pos)
+#         x1 = start[0] + math.cos(angle) * pos
+#         y1 = start[1] + math.sin(angle) * pos
+#         x2 = start[0] + math.cos(angle) * (pos + end)
+#         y2 = start[1] + math.sin(angle) * (pos + end)
+#         arcade.draw_line(x1, y1, x2, y2, color, width)
+#         pos += dash + gap

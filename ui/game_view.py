@@ -1,7 +1,7 @@
 import arcade
 from components import level
 from levels.testo_3 import get_level
-from ui.drawer import draw_shape_filled, draw_styled_outline, make_shape, draw_unit
+from ui.drawer import draw_unit
 
 # print(level)
 SCREEN_WIDTH = 800
@@ -74,10 +74,11 @@ class GameView(arcade.View):
                 arcade.draw_text(
                     round(self.level.calculate_unit_income(unit), 2),
                     unit.x,
-                    unit.y,
+                    unit.y + (unit.body_radius * 0.5),
                     arcade.color.WHITE,
-                    16,
+                    12,
                     anchor_x="center",
+                    bold=True,
                 )
             # информация
             info_lines = [
