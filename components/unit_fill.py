@@ -3,23 +3,17 @@ from enum import Enum
 
 
 class Fill(Enum):
-    PLAIN = "plain"
-    STRIPED = "striped"
-    CHECKERED = "checkered"
-    WAVED = "waved"
-    DOTTED = "dotted"
+    PLAIN = 0
+    STRIPED = 1
+    CHECKERED = 2
+    WAVED = 3
+    DOTTED = 4
 
 
 class UnitFill(UnitSimilarityTrait):
-    value = Fill
+    value: Fill
 
     def __init__(self, value: Fill, income: float = None):
         self.value = value
         if income:
             self.income = income
-
-    def __str__(self):
-        return f"{self.value}"
-
-    def __repr__(self):
-        return f"{self.value}"

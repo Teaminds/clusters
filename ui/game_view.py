@@ -9,7 +9,7 @@ SCREEN_HEIGHT = 600
 AURA_ALPHA = 40  # прозрачность ауры
 
 
-class GameView(arcade.View):
+class LevelView(arcade.View):
     def __init__(self, level: level):
         super().__init__()
         self.level = level

@@ -3,11 +3,11 @@ from enum import Enum
 
 
 class Color(Enum):
-    BLUE = "blue"
-    GREEN = "green"
-    RED = "red"
-    YELLOW = "yellow"
-    VIOLET = "violet"
+    BLUE = 0
+    GREEN = 1
+    RED = 2
+    YELLOW = 3
+    VIOLET = 4
 
 
 class UnitColor(UnitSimilarityTrait):
@@ -30,9 +30,3 @@ class UnitColor(UnitSimilarityTrait):
             self.rgb = (238, 130, 238)
         else:
             raise ValueError(f"Unknown color: {value}")
-
-    def __str__(self):
-        return f"{self.value}"
-
-    def __repr__(self):
-        return f"{self.value}"

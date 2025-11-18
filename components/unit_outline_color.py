@@ -3,12 +3,12 @@ from components.unit_similarity_trait import UnitSimilarityTrait
 
 
 class OutlineColor(Enum):
-    DARK_BLUE = "dark_blue"
-    DARK_GREEN = "dark_green"
-    DARK_RED = "dark_red"
-    DARK_YELLOW = "dark_yellow"
-    DARK_VIOLET = "dark_violet"
-    DARK_GRAY = "dark_gray"
+    DARK_BLUE = 0
+    DARK_GREEN = 1
+    DARK_RED = 2
+    DARK_YELLOW = 3
+    DARK_VIOLET = 4
+    # DARK_GRAY = 5
 
 
 class UnitOutlineColor(UnitSimilarityTrait):
@@ -33,9 +33,3 @@ class UnitOutlineColor(UnitSimilarityTrait):
             self.rgb = (169, 169, 169)
         else:
             raise ValueError(f"Unknown outline color: {value}")
-
-    def __str__(self):
-        return f"{self.value}"
-
-    def __repr__(self):
-        return f"{self.value}"

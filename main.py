@@ -1,4 +1,4 @@
-from levels.testo_3 import get_level
+from levels.testo_2 import get_level
 
 import arcade
 from ui import game_view
@@ -6,7 +6,7 @@ from ui import game_view
 
 def main():
     window = arcade.Window(1200, 720, "Clusters")
-    view = game_view.GameView(level=get_level())
+    view = game_view.LevelView(level=get_level())
     window.show_view(view)
     arcade.run()
 

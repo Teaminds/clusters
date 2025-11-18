@@ -52,7 +52,7 @@ def make_shape(
 
 
 def draw_unit(unit: Unit, x: float, y: float) -> None:
-    visual_code = f"{unit.shape.value:02d}_{unit.fill.value:02d}_{unit.outline.value:02d}_{unit.color.value:02d}_{unit.outline_color.value:02d}"
+    visual_code = f"{int(unit.shape.value.value):02d}_{int(unit.fill.value.value):02d}_{int(0):02d}_{int(unit.color.value.value):02d}_{int(unit.outline_color.value.value):02d}"
     sprite = arcade.Sprite(path_or_texture=f"assets/units/{visual_code}.png", scale=0.5)
     sprite.center_x = x
     sprite.center_y = y

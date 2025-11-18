@@ -3,10 +3,10 @@ from enum import Enum
 
 
 class Shape(Enum):
-    CIRCLE = "circle"
-    SQUARE = "square"
-    TRIANGLE = "triangle"
-    STAR = "star"
+    CIRCLE = 0
+    SQUARE = 1
+    TRIANGLE = 2
+    STAR = 3
 
 
 class UnitShape(UnitSimilarityTrait):
@@ -16,9 +16,3 @@ class UnitShape(UnitSimilarityTrait):
         self.value = value
         if income:
             self.income = income
-
-    def __str__(self):
-        return f"{self.value}"
-
-    def __repr__(self):
-        return f"{self.value}"

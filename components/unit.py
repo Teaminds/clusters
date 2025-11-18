@@ -4,6 +4,8 @@ from components.unit_outline import UnitOutline, Outline
 from components.unit_outline_color import UnitOutlineColor, OutlineColor
 from components.unit_shape import UnitShape, Shape
 from components.unit_similarity_trait import UnitSimilarityTrait
+from components.unit_trait_a import UnitTraitA
+from typing import Literal, Any
 import uuid
 import random
 
@@ -32,6 +34,8 @@ class Unit:
         outline_color: UnitSimilarityTrait = None,
         x: float = None,
         y: float = None,
+        income_time: float = 0.0,
+        life_time: float = float("+inf"),
     ):
         self.uid = uuid.uuid4()
         self.shape: UnitSimilarityTrait = shape or UnitSimilarityTrait(
