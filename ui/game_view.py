@@ -1,7 +1,12 @@
 import arcade
-from components import level
-from levels.testo_3 import get_level
+from typing import TYPE_CHECKING
+
+# from levels.testo_3 import get_level
 from ui.drawer import draw_unit
+
+if TYPE_CHECKING:
+    from components.level import Level
+
 
 # print(level)
 SCREEN_WIDTH = 800
@@ -10,7 +15,7 @@ AURA_ALPHA = 40  # прозрачность ауры
 
 
 class LevelView(arcade.View):
-    def __init__(self, level: level):
+    def __init__(self, level: Level):
         super().__init__()
         self.level = level
         self.dragged_unit = None
@@ -18,13 +23,13 @@ class LevelView(arcade.View):
         self.score_timer = 0.0
         self.state = "playing"
 
-    def on_key_press(self, key, modifiers):
+    # def on_key_press(self, key, modifiers):
 
-        if key == arcade.key.R and self.state in ("win", "lose"):
-            self.level = get_level()
-            self.level.group_manager.refresh_groups(self.level.units)
-            self.state = "playing"
-            self.score_timer = 0.0
+    #     if key == arcade.key.R and self.state in ("win", "lose"):
+    #         self.level = get_level()
+    #         self.level.group_manager.refresh_groups(self.level.units)
+    #         self.state = "playing"
+    #         self.score_timer = 0.0
 
     def on_draw(self):
         self.clear()
@@ -153,7 +158,7 @@ class LevelView(arcade.View):
         for unit in reversed(self.level.units):  # сверху вниз
             if unit.distance_to((x, y)) <= unit.body_radius:
                 self.dragged_unit = unit
-                self.dragged_unit.dragged = True
+                self.dragged_unit.dragging = True
                 self.level.group_manager.groups[
                     self.dragged_unit.group_uid
                 ].remove_unit(self.dragged_unit)
@@ -187,6 +192,6 @@ class LevelView(arcade.View):
             self.dragged_unit.y = new_y
 
     def on_mouse_release(self, x, y, button, modifiers):
-        self.dragged_unit.dragged = False
+        self.dragged_unit.dragging = False
         self.level.group_manager.refresh_groups(self.level.units)
         self.dragged_unit = None

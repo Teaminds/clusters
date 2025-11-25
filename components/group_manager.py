@@ -1,22 +1,27 @@
-import uuid
+from ctypes import util
+from system_components.Core_Builded import core
+
 from components.group import Group
 from components.unit import Unit
 
 
 class GroupManager:
-    groups: dict[uuid.UUID, Group] = {}
+    groups: dict[str, Group] = {}
     _id_counter: int = 0
+    uid: str
 
     def __init__(self, units: list[Unit] = None):
         self.groups = {}
         self.refresh_groups(units)
+        self.uid = core.utils().uid()
+        core.registry().register(self)
 
     def get_distance(self, unit1: Unit, unit2: Unit) -> float:
         return ((unit1.x - unit2.x) ** 2 + (unit1.y - unit2.y) ** 2) ** 0.5
 
     def refresh_groups(self, units: list[Unit]):
         for unit in units:
-            if unit.dragged is False:
+            if unit.dragging is False:
                 neghbours = []
                 potential_groups = []
                 biggest_group = None
@@ -65,7 +70,7 @@ class GroupManager:
                         unit_group.add_unit(unit)
                         self.groups[unit_group.uid] = unit_group
 
-    def move_to_group(self, unit: Unit, group_uid: uuid.UUID):
+    def move_to_group(self, unit: Unit, group_uid: str):
         if unit.group_uid is not None:
             self.groups[unit.group_uid].remove_unit(unit)
             if len(self.groups[unit.group_uid].units) == 0:
