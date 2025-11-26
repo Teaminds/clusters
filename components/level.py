@@ -35,6 +35,8 @@ class Level:
     ):
         self.name: str = name
         self.description: str = description
+        self.number: int = 0
+        self.act_number: int = 0
         self.time: float = 0.0
         self.timer: int = timer
         self.goal: int = goal
@@ -42,7 +44,7 @@ class Level:
         self.income: float = income
         self.score: float = score
         self.group_manager: GroupManager = GroupManager(units=units)
-        self.unique_traits_counts: dict[str, dict[Any, int]] = {}
+        self.unique_traits_counts: dict[str, dict[str, int]] = {}
         self.uid: str = core.utils().uid()
         core.registry().register(self)
         core.signals().subscribe(
@@ -55,6 +57,7 @@ class Level:
             object_uid=self.uid,
             method_name="decrease_unique_trait_type_count_by_unit",
         )
+        self.recalc_units_activation()
         # self.level_number: int = level_number
 
         # for unit in units or []:

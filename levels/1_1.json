@@ -1,0 +1,65 @@
+{
+    "name": "Complicated Level",
+    "description": "This is a test level",
+    "number": 1,
+    "act_number": 1,
+    "units": [
+        {
+            "traits": {
+                "trait_a": {},
+                "trait_b": {
+                    "value": "4"
+                },
+                "trait_c": {
+                    "income": 1.0
+                },
+                "trait_e": {
+                    "value": "4",
+                    "income": 1.0
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 0.5,
+            "y": 0.5,
+            "body_radius": 0.005,
+            "aura_radius": 0.007
+        }
+    ],
+    "timer": 300,
+    "goal_score": 100,
+    "default_traits_pool": {
+        "trait_a": {
+            "0": {
+                "income": 1.0
+            },
+            "4": {}
+        },
+        "trait_c": {
+            "0": {
+                "income": 5.0
+            },
+            "4": {}
+        },
+        "trait_b": {
+            "0": {
+                "income": 1.0
+            },
+            "1": {
+                "income": 1.0
+            },
+            "2": {
+                "income": 1.0
+            },
+            "3": {
+                "income": 1.0
+            },
+            "4": {
+                "income": 1.0
+            }
+        }
+    },
+    "income": 0.0,
+    "starting_score": 0.0
+}

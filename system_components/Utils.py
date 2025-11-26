@@ -34,3 +34,15 @@ class Utils:
         """
         result = "".join(word.capitalize() for word in snake_str.split("_"))
         return result
+
+    @staticmethod
+    def sort_dict_recursive(d):
+        if isinstance(d, dict):
+            result = {}
+            for k in sorted(d):
+                result[k] = Utils.sort_dict_recursive(d[k])
+            return result
+        elif isinstance(d, list):
+            return [Utils.sort_dict_recursive(i) for i in d]
+        else:
+            return d

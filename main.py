@@ -1,9 +1,9 @@
 # from levels.testo_2 import get_level
 
-import arcade
-from ui import game_view
+# import arcade
+# from ui import game_view
 from system_components.Core_Builded import core
-from components.level_factory import LevelFactory, level_config
+from components.level_loader import LevelLoader
 
 core.set_utils()
 core.set_registry()
@@ -15,10 +15,11 @@ core.logger().uid = core.utils().uid()
 core.registry().register(core.logger())
 
 # t = LevelFactory.prepare_level_config(level_config=level_config)
-l = LevelFactory.create_level_from_config(level_config=level_config)
-l.recalc_units_activation()
-# breakpoint()
-# pass
+levels_info_list = LevelLoader.load_levels_info_list()
+level_config = LevelLoader.load_level_config(level_number=1, act_number=1)
+level = LevelLoader.load_level(level_number=1, act_number=1)
+breakpoint()
+pass
 
 
 # def main():

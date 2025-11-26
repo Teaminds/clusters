@@ -9,134 +9,140 @@ if TYPE_CHECKING:
     from components.unit import Unit
 
 
-standart = {
-    "name": "standart Level",
-    "description": "This is a test level",
-    "units": [
-        {
-            "traits": {
-                "trait_a": {"value": 4, "income": 1.0},
-                "trait_b": {"value": 4, "income": 2.0},
-                "trait_c": {"value": 4, "income": 3.0},
-                "trait_d": {"value": 4, "income": 4.0},
-                "trait_e": {"value": 4, "income": 5.0},
-            },
-            "draggedable": True,
-            "income_time": 0,
-            "life_time": 0,
-            "x": 0.5,
-            "y": 0.5,
-            "body_radius": 0.005,
-            "aura_radius": 0.007,
-        }
-    ],
-    "timer": 300,
-    "goal_score": 100,
-    "default_traits_pool": {
-        "trait_a": {
-            0: {"income": 1.0},
-            1: {"income": 1.0},
-            2: {"income": 1.0},
-            3: {"income": 1.0},
-            4: {"income": 1.0},
-        },
-        "trait_b": {
-            0: {"income": 1.0},
-            1: {"income": 1.0},
-            2: {"income": 1.0},
-            3: {"income": 1.0},
-            4: {"income": 1.0},
-        },
-        "trait_c": {
-            0: {"income": 1.0},
-            1: {"income": 1.0},
-            2: {"income": 1.0},
-            3: {"income": 1.0},
-            4: {"income": 1.0},
-        },
-        "trait_d": {
-            0: {"income": 1.0},
-            1: {"income": 1.0},
-            2: {"income": 1.0},
-            3: {"income": 1.0},
-            4: {"income": 1.0},
-        },
-        "trait_e": {
-            0: {"income": 1.0},
-            1: {"income": 1.0},
-            2: {"income": 1.0},
-            3: {"income": 1.0},
-            4: {"income": 1.0},
-        },
-    },
-}
+# standart = {
+#     "name": "standart Level",
+#     "description": "This is a test level",
+#     "number": 1,
+#     "act_number": 1,
+#     "units": [
+#         {
+#             "traits": {
+#                 "trait_a": {"value": 4, "income": 1.0},
+#                 "trait_b": {"value": 4, "income": 2.0},
+#                 "trait_c": {"value": 4, "income": 3.0},
+#                 "trait_d": {"value": 4, "income": 4.0},
+#                 "trait_e": {"value": 4, "income": 5.0},
+#             },
+#             "draggedable": True,
+#             "income_time": 0,
+#             "life_time": 0,
+#             "x": 0.5,
+#             "y": 0.5,
+#             "body_radius": 0.005,
+#             "aura_radius": 0.007,
+#         }
+#     ],
+#     "timer": 300,
+#     "goal_score": 100,
+#     "default_traits_pool": {
+#         "trait_a": {
+#             0: {"income": 1.0},
+#             1: {"income": 1.0},
+#             2: {"income": 1.0},
+#             3: {"income": 1.0},
+#             4: {"income": 1.0},
+#         },
+#         "trait_b": {
+#             0: {"income": 1.0},
+#             1: {"income": 1.0},
+#             2: {"income": 1.0},
+#             3: {"income": 1.0},
+#             4: {"income": 1.0},
+#         },
+#         "trait_c": {
+#             0: {"income": 1.0},
+#             1: {"income": 1.0},
+#             2: {"income": 1.0},
+#             3: {"income": 1.0},
+#             4: {"income": 1.0},
+#         },
+#         "trait_d": {
+#             0: {"income": 1.0},
+#             1: {"income": 1.0},
+#             2: {"income": 1.0},
+#             3: {"income": 1.0},
+#             4: {"income": 1.0},
+#         },
+#         "trait_e": {
+#             0: {"income": 1.0},
+#             1: {"income": 1.0},
+#             2: {"income": 1.0},
+#             3: {"income": 1.0},
+#             4: {"income": 1.0},
+#         },
+#     },
+# }
 
-lite = {
-    "name": "lite Level",
-    "units": [{}],
-    "goal_score": 100,
-}
+# lite = {
+#     "name": "lite Level",
+#     "number": 1,
+#     "act_number": 1,
+#     "units": [{}],
+#     "goal_score": 100,
+# }
 
-level_config = {
-    "name": "Complicated Level",
-    "description": "This is a test level",
-    "units": [
-        {
-            "traits": {
-                "trait_a": {},
-                "trait_b": {"value": 4},
-                "trait_c": {"income": 1.0},
-                "trait_e": {"value": 4, "income": 1.0},
-            },
-            "draggedable": True,
-            "income_time": 0,
-            "life_time": 0,
-            "x": 0.5,
-            "y": 0.5,
-            "body_radius": 0.005,
-            "aura_radius": 0.007,
-        }
-    ],
-    "timer": 300,
-    "goal_score": 100,
-    "default_traits_pool": {
-        "trait_a": {
-            0: {"income": 1.0},
-            4: {},
-        },
-        "trait_c": {
-            0: {"income": 5.0},
-            4: {},
-        },
-        "trait_b": {
-            0: {"income": 1.0},
-            1: {"income": 1.0},
-            2: {"income": 1.0},
-            3: {"income": 1.0},
-            4: {"income": 1.0},
-        },
-    },
-    "income": 0.0,
-    "starting_score": 0.0,
-}
+# level_config = {
+#     "name": "Complicated Level",
+#     "description": "This is a test level",
+#     "number": 1,
+#     "act_number": 1,
+#     "units": [
+#         {
+#             "traits": {
+#                 "trait_a": {},
+#                 "trait_b": {"value": 4},
+#                 "trait_c": {"income": 1.0},
+#                 "trait_e": {"value": 4, "income": 1.0},
+#             },
+#             "draggedable": True,
+#             "income_time": 0,
+#             "life_time": 0,
+#             "x": 0.5,
+#             "y": 0.5,
+#             "body_radius": 0.005,
+#             "aura_radius": 0.007,
+#         }
+#     ],
+#     "timer": 300,
+#     "goal_score": 100,
+#     "default_traits_pool": {
+#         "trait_a": {
+#             0: {"income": 1.0},
+#             4: {},
+#         },
+#         "trait_c": {
+#             0: {"income": 5.0},
+#             4: {},
+#         },
+#         "trait_b": {
+#             0: {"income": 1.0},
+#             1: {"income": 1.0},
+#             2: {"income": 1.0},
+#             3: {"income": 1.0},
+#             4: {"income": 1.0},
+#         },
+#     },
+#     "income": 0.0,
+#     "starting_score": 0.0,
+# }
 
-unit_config = [
-    {
-        "traits": {
-            "trait_a": {},
-            "trait_b": {"value": 4},
-            "trait_c": {"income": 1.0},
-            "trait_e": {"value": 4, "income": 1.0},
-        },
-        "draggedable": True,
-        "income_time": 0,
-        "life_time": 0,
-        "x": 0.5,
-        "y": 0.5,
-        "body_radius": 0.005,
-        "aura_radius": 0.007,
-    }
-]
+# unit_config = [
+#     {
+#         "traits": {
+#             "trait_a": {},
+#             "trait_b": {"value": 4},
+#             "trait_c": {"income": 1.0},
+#             "trait_e": {"value": 4, "income": 1.0},
+#         },
+#         "draggedable": True,
+#         "income_time": 0,
+#         "life_time": 0,
+#         "x": 0.5,
+#         "y": 0.5,
+#         "body_radius": 0.005,
+#         "aura_radius": 0.007,
+#     }
+# ]
 
 
 class LevelFactory:
@@ -146,6 +152,8 @@ class LevelFactory:
         available_keys = [
             "name",
             "description",
+            "number",
+            "act_number",
             "units",
             "timer",
             "goal_score",
@@ -169,6 +177,16 @@ class LevelFactory:
         if "description" in level_config:
             if not isinstance(level_config["description"], str):
                 raise ValueError("'description' must be a string")
+
+        if "number" not in level_config:
+            raise ValueError("Level config must contain 'number' key")
+        elif not isinstance(level_config["number"], int):
+            raise ValueError("'number' must be an integer")
+
+        if "act_number" not in level_config:
+            raise ValueError("Level config must contain 'act_number' key")
+        elif not isinstance(level_config["act_number"], int):
+            raise ValueError("'act_number' must be an integer")
 
         if "units" not in level_config:
             raise ValueError("Level config must contain 'units' key")
@@ -203,9 +221,9 @@ class LevelFactory:
                         f"'default_traits_pool' for trait {trait_name} must be a dictionary"
                     )
                 for value, option_data in options.items():
-                    if not isinstance(value, int):
+                    if not isinstance(value, str):
                         raise ValueError(
-                            f"Trait value for trait '{trait_name}' must be an integer"
+                            f"Trait value for trait '{trait_name}' must be a string"
                         )
                     for option_key, option_value in option_data.items():
                         if option_key not in ["value", "income"]:

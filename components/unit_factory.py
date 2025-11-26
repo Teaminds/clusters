@@ -180,8 +180,8 @@ class UnitFactory:
                         )
                 test_value = unit_config["traits"][trait].get("value")
                 if test_value is not None:
-                    if not isinstance(test_value, int):
-                        raise ValueError(f"Trait '{trait}' value must be an integer")
+                    if not isinstance(test_value, str):
+                        raise ValueError(f"Trait '{trait}' value must be an string")
                     if test_value not in trait_options[trait]:
                         raise ValueError(
                             f"Trait '{trait}' value '{test_value}' not in options {trait_options[trait]}"
@@ -303,7 +303,9 @@ class UnitFactory:
         for trait_key in trait_keys:
             if trait_key not in prepared_config["traits"]:
                 if trait_key in trait_options:
-                    option = choice(trait_options[trait_key])
+                    keys = list(trait_options[trait_key].keys())
+                    option_value = choice(keys)
+                    option = trait_options[trait_key][option_value]
                 prepared_config["traits"][trait_key] = option
             else:
                 value = choice(list(trait_options[trait_key].keys()))
