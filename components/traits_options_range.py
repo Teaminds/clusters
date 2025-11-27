@@ -1,0 +1,65 @@
+from turtle import st
+
+
+class TraitsOptionsRange:
+    hardcoded_options = {
+        "trait_a": {
+            "0": {"income": 1.0},
+            "1": {"income": 1.0},
+            "2": {"income": 1.0},
+            "3": {"income": 1.0},
+            "4": {"income": 1.0},
+        },
+        "trait_b": {
+            "0": {"income": 1.0},
+            "1": {"income": 1.0},
+            "2": {"income": 1.0},
+            "3": {"income": 1.0},
+            "4": {"income": 1.0},
+        },
+        "trait_c": {
+            "0": {"income": 1.0},
+            "1": {"income": 1.0},
+            "2": {"income": 1.0},
+            "3": {"income": 1.0},
+            "4": {"income": 1.0},
+        },
+        "trait_d": {
+            "0": {"income": 1.0},
+            "1": {"income": 1.0},
+            "2": {"income": 1.0},
+            "3": {"income": 1.0},
+            "4": {"income": 1.0},
+        },
+        "trait_e": {
+            "0": {"income": 1.0},
+            "1": {"income": 1.0},
+            "2": {"income": 1.0},
+            "3": {"income": 1.0},
+            "4": {"income": 1.0},
+        },
+    }
+
+    @staticmethod
+    def get_hardcoded_options():
+
+        return TraitsOptionsRange.hardcoded_options
+
+    @staticmethod
+    def get_traits_keys() -> list[str]:
+        return list(TraitsOptionsRange.hardcoded_options.keys())
+
+    @staticmethod
+    def get_trait_options(trait_name: str) -> dict:
+        return TraitsOptionsRange.hardcoded_options.get(trait_name, {})
+
+    @staticmethod
+    def get_trait_values(trait_name: str) -> list:
+        options = TraitsOptionsRange.get_trait_options(trait_name)
+        return list(options.keys())
+
+    @staticmethod
+    def get_trait_income(trait_name: str, value: str) -> float:
+        options = TraitsOptionsRange.get_trait_options(trait_name)
+        option = options.get(value, {})
+        return option.get("income", 0.0)

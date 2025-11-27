@@ -1,8 +1,7 @@
 from __future__ import annotations
 from components.level import Level
 from components.unit_factory import UnitFactory
-from components.unit_similarity_trait import UnitSimilarityTrait
-
+from components.traits_options_range import TraitsOptionsRange
 from typing import TYPE_CHECKING, Literal, Any, Optional, Union
 
 if TYPE_CHECKING:
@@ -161,7 +160,7 @@ class LevelFactory:
             "income",
             "starting_score",
         ]
-        trait_keys = UnitSimilarityTrait.get_traits_keys()
+        trait_keys = TraitsOptionsRange.get_traits_keys()
 
         if not isinstance(level_config, dict):
             raise ValueError("Level config must be a dictionary")
@@ -256,7 +255,7 @@ class LevelFactory:
         level_config: dict[str, Any],
     ) -> dict[str, Any]:
         prepared_config = level_config.copy()
-        trait_keys = UnitSimilarityTrait.get_traits_keys()
+        trait_keys = TraitsOptionsRange.get_traits_keys()
         prepared_config.setdefault("description", "")
         prepared_config.setdefault("timer", float("+inf"))
         if prepared_config["timer"] is None or prepared_config["timer"] == 0:
@@ -267,15 +266,13 @@ class LevelFactory:
         if "default_traits_pool" not in prepared_config:
             prepared_config.setdefault(
                 "default_traits_pool",
-                UnitSimilarityTrait.get_hardcoded_traits_options(),
+                TraitsOptionsRange.get_hardcoded_options(),
             )
         else:
             for trait_name in trait_keys:
                 if trait_name not in prepared_config["default_traits_pool"]:
                     prepared_config["default_traits_pool"][trait_name] = (
-                        UnitSimilarityTrait.get_hardcoded_options_by_trait_name(
-                            trait_name
-                        )
+                        TraitsOptionsRange.get_trait_options(trait_name)
                     )
                 else:
                     for trait_value in prepared_config["default_traits_pool"][
@@ -289,13 +286,9 @@ class LevelFactory:
                         ):
                             prepared_config["default_traits_pool"][trait_name][
                                 trait_value
-                            ][
-                                "income"
-                            ] = UnitSimilarityTrait.get_hardcoded_option_by_trait_name_and_value(
+                            ]["income"] = TraitsOptionsRange.get_trait_income(
                                 trait_name=trait_name, value=trait_value
-                            )[
-                                "income"
-                            ]
+                            )
         prepared_units_configs = []
         for unit_cfg in prepared_config["units"]:
             if UnitFactory.check_unit_config(
