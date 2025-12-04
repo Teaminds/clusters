@@ -1,138 +1,13 @@
 from __future__ import annotations
+from system_components.Core_Builded import core
 from components.traits_options_range import TraitsOptionsRange
 from components.unit import Unit
 from components.unit_similarity_trait import UnitSimilarityTrait
-from random import choice, randint, random, uniform
-from typing import TYPE_CHECKING, Literal, Any, Optional, Union
+from random import choice, uniform
+from typing import TYPE_CHECKING, Any, Optional
 
 if TYPE_CHECKING:
-    from components.level import Level
-
-
-# standart = {
-#     "name": "standart Level",
-#     "description": "This is a test level",
-#     "units": [
-#         {
-#             "traits": {
-#                 "trait_a": {"value": 4, "income": 1.0},
-#                 "trait_b": {"value": 4, "income": 2.0},
-#                 "trait_c": {"value": 4, "income": 3.0},
-#                 "trait_d": {"value": 4, "income": 4.0},
-#                 "trait_e": {"value": 4, "income": 5.0},
-#             },
-#             "draggedable": True,
-#             "income_time": 0,
-#             "life_time": 0,
-#             "x": 0.5,
-#             "y": 0.5,
-#             "body_radius": 0.005,
-#             "aura_radius": 0.007,
-#         }
-#     ],
-#     "timer": 300,
-#     "goal_score": 100,
-#     "default_traits_pool": {
-#         "trait_a": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#         "trait_b": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#         "trait_c": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#         "trait_d": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#         "trait_e": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#     },
-# }
-
-# lite = {
-#     "name": "lite Level",
-#     "units": [{}],
-#     "goal_score": 100,
-# }
-
-# level_config = {
-#     "name": "Complicated Level",
-#     "description": "This is a test level",
-#     "units": [
-#         {
-#             "traits": {
-#                 "trait_a": {},
-#                 "trait_b": {"value": 4},
-#                 "trait_c": {"income": 1.0},
-#                 "trait_e": {"value": 4, "income": 1.0},
-#             },
-#             "draggedable": True,
-#             "income_time": 0,
-#             "life_time": 0,
-#             "x": 0.5,
-#             "y": 0.5,
-#             "body_radius": 0.005,
-#             "aura_radius": 0.007,
-#         }
-#     ],
-#     "timer": 300,
-#     "goal_score": 100,
-#     "default_traits_pool": {
-#         "trait_a": {
-#             0: {"income": 1.0},
-#             4: {},
-#         },
-#         "trait_b": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#     },
-#     "income": 0.0,
-#     "starting_score": 0.0,
-# }
-
-# unit_config = [
-#     {
-#         "traits": {
-#             "trait_a": {},
-#             "trait_b": {"value": 4},
-#             "trait_c": {"income": 1.0},
-#             "trait_e": {"value": 4, "income": 1.0},
-#         },
-#         "draggedable": True,
-#         "income_time": 0,
-#         "life_time": 0,
-#         "x": 0.5,
-#         "y": 0.5,
-#         "body_radius": 0.005,
-#         "aura_radius": 0.007,
-#     }
-# ]
+    pass
 
 
 class UnitFactory:
@@ -141,7 +16,7 @@ class UnitFactory:
     def check_unit_config(
         unit_config: dict[str, Any],
         trait_options: dict[str, list[int]],
-        level_timer: Union[float, int],
+        level_timer: float | int,
     ) -> bool:
         trait_keys = TraitsOptionsRange.get_traits_keys()
 
@@ -194,46 +69,6 @@ class UnitFactory:
                 if test_income is not None:
                     if not isinstance(test_income, (int, float)):
                         raise ValueError(f"Trait '{trait}' income must be a number")
-
-            # for trait_key in trait_keys:
-            #     if trait_key in unit_config["traits"]:
-            #         if (
-            #             "value" in unit_config["traits"][trait_key]
-            #             and unit_config["traits"][trait_key]["value"]
-            #             not in trait_options[trait_key]
-            #         ):
-            #             raise ValueError(
-            #                 f"'{trait_key}' value '{unit_config['traits'][trait_key]}' not in options '{trait_options[trait_key]}'"
-            #             )
-            #         if isinstance(unit_config["traits"][trait_key], int):
-            #             trait = unit_config["traits"][trait_key]
-            #         elif isinstance(unit_config["traits"][trait_key], dict):
-
-            #             if unit_config["traits"][trait_key] != {}:
-            #                 for key in unit_config["traits"][trait_key].keys():
-            #                     if key not in ["value", "income"]:
-            #                         raise ValueError(
-            #                             f"'{trait_key}' dict must only contain 'value' and 'income' keys"
-            #                         )
-            #                 trait = unit_config["traits"][trait_key]["value"]
-            #                 if not isinstance(
-            #                     unit_config["traits"][trait_key]["income"], (int, float)
-            #                 ):
-            #                     raise ValueError(
-            #                         f"'{trait_key}' income must be a integer or float"
-            #                     )
-            #                 if (
-            #                     trait
-            #                     not in UnitSimilarityTrait.get_hardcoded_options_by_trait_name(
-            #                         trait_key
-            #                     )
-            #                 ):
-            #                     raise ValueError(
-            #                         f"'{trait_key}' value '{trait}' not in hardcoded options '{UnitSimilarityTrait.get_hardcoded_options_by_trait_name(trait_key)}'"
-            #                     )
-            #     else:
-            #         raise ValueError(f"'{trait_key}' must be defined in 'traits'")
-
         if "draggedable" in unit_config:
             if not isinstance(unit_config["draggedable"], bool):
                 raise ValueError("'draggedable' must be a boolean")
@@ -256,13 +91,13 @@ class UnitFactory:
         if "x" in unit_config:
             if not isinstance(unit_config["x"], (int, float)):
                 raise ValueError("'x' must be a number")
-            if unit_config["x"] < 0 or unit_config["x"] > 1:
+            if unit_config["x"] < 0 or unit_config["x"] > 1280:
                 raise ValueError(f"'x' must be between 0 and 1")
 
         if "y" in unit_config:
             if not isinstance(unit_config["y"], (int, float)):
                 raise ValueError("'y' must be a number")
-            if unit_config["y"] < 0 or unit_config["y"] > 1:
+            if unit_config["y"] < 0 or unit_config["y"] > 720:
                 raise ValueError(f"'y' must be between 0 and 1")
 
         if "body_radius" in unit_config:
@@ -274,8 +109,8 @@ class UnitFactory:
         if "aura_radius" in unit_config:
             if not isinstance(unit_config["aura_radius"], (int, float)):
                 raise ValueError("'aura_radius' must be a number")
-            if unit_config["aura_radius"] < 0 or unit_config["aura_radius"] > 1:
-                raise ValueError("'aura_radius' must be between 0 and 1")
+            if unit_config["aura_radius"] < 0 or unit_config["aura_radius"] > 1280:
+                raise ValueError("'aura_radius' must be between 0 and 1280")
             if "body_radius" not in unit_config:
                 raise ValueError(
                     "'body_radius' must be defined if 'aura_radius' is defined"
@@ -288,7 +123,7 @@ class UnitFactory:
     @staticmethod
     def prepare_unit_config(
         unit_config: dict[str, Any],
-        level_timer: Union[float, int],
+        level_timer: float | int,
         trait_options: Optional[dict[str, list[int]]] = {},
     ) -> dict[str, Any]:
         prepared_config = unit_config.copy()
@@ -313,15 +148,25 @@ class UnitFactory:
         if "draggedable" not in prepared_config:
             prepared_config["draggedable"] = choice([True, False])
         if "income_time" not in prepared_config:
-            prepared_config["income_time"] = uniform(0, level_timer)
+            immediate_income_time = choice([True, False])
+            if immediate_income_time:
+                prepared_config["income_time"] = 0
+            else:
+                prepared_config["income_time"] = uniform(0, level_timer)
         if "life_time" not in prepared_config:
-            prepared_config["life_time"] = uniform(0, level_timer * 2)
+            endless_life_time = choice([True, False])
+            if endless_life_time:
+                prepared_config["life_time"] = float("+inf")
+            else:
+                prepared_config["life_time"] = uniform(0.01, level_timer * 2)
+        if "life_time" == 0:
+            prepared_config["life_time"] = float("+inf")
         if "x" not in prepared_config:
-            prepared_config["x"] = uniform(0, 1)
+            prepared_config["x"] = uniform(0, 1280)
         if "y" not in prepared_config:
-            prepared_config["y"] = uniform(0, 1)
+            prepared_config["y"] = uniform(0, 720)
         if "body_radius" not in prepared_config:
-            prepared_config["body_radius"] = float(0.005)
+            prepared_config["body_radius"] = float(30)
         if "aura_radius" not in prepared_config:
             prepared_config["aura_radius"] = prepared_config["body_radius"] * 1.4
 
@@ -353,7 +198,7 @@ class UnitFactory:
     def create_many_units_from_list_of_configs(
         list_of_units_configs: list[dict[str, Any]],
         trait_options: dict[str, list[int]],
-        level_timer: Union[float, int],
+        level_timer: float | int,
     ) -> list[Unit]:
         units: list[Unit] = []
         for unit_config in list_of_units_configs:

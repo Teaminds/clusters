@@ -1,147 +1,12 @@
 from __future__ import annotations
+from system_components.Core_Builded import core
 from components.level import Level
 from components.unit_factory import UnitFactory
 from components.traits_options_range import TraitsOptionsRange
-from typing import TYPE_CHECKING, Literal, Any, Optional, Union
+from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
     from components.unit import Unit
-
-
-# standart = {
-#     "name": "standart Level",
-#     "description": "This is a test level",
-#     "number": 1,
-#     "act_number": 1,
-#     "units": [
-#         {
-#             "traits": {
-#                 "trait_a": {"value": 4, "income": 1.0},
-#                 "trait_b": {"value": 4, "income": 2.0},
-#                 "trait_c": {"value": 4, "income": 3.0},
-#                 "trait_d": {"value": 4, "income": 4.0},
-#                 "trait_e": {"value": 4, "income": 5.0},
-#             },
-#             "draggedable": True,
-#             "income_time": 0,
-#             "life_time": 0,
-#             "x": 0.5,
-#             "y": 0.5,
-#             "body_radius": 0.005,
-#             "aura_radius": 0.007,
-#         }
-#     ],
-#     "timer": 300,
-#     "goal_score": 100,
-#     "default_traits_pool": {
-#         "trait_a": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#         "trait_b": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#         "trait_c": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#         "trait_d": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#         "trait_e": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#     },
-# }
-
-# lite = {
-#     "name": "lite Level",
-#     "number": 1,
-#     "act_number": 1,
-#     "units": [{}],
-#     "goal_score": 100,
-# }
-
-# level_config = {
-#     "name": "Complicated Level",
-#     "description": "This is a test level",
-#     "number": 1,
-#     "act_number": 1,
-#     "units": [
-#         {
-#             "traits": {
-#                 "trait_a": {},
-#                 "trait_b": {"value": 4},
-#                 "trait_c": {"income": 1.0},
-#                 "trait_e": {"value": 4, "income": 1.0},
-#             },
-#             "draggedable": True,
-#             "income_time": 0,
-#             "life_time": 0,
-#             "x": 0.5,
-#             "y": 0.5,
-#             "body_radius": 0.005,
-#             "aura_radius": 0.007,
-#         }
-#     ],
-#     "timer": 300,
-#     "goal_score": 100,
-#     "default_traits_pool": {
-#         "trait_a": {
-#             0: {"income": 1.0},
-#             4: {},
-#         },
-#         "trait_c": {
-#             0: {"income": 5.0},
-#             4: {},
-#         },
-#         "trait_b": {
-#             0: {"income": 1.0},
-#             1: {"income": 1.0},
-#             2: {"income": 1.0},
-#             3: {"income": 1.0},
-#             4: {"income": 1.0},
-#         },
-#     },
-#     "income": 0.0,
-#     "starting_score": 0.0,
-# }
-
-# unit_config = [
-#     {
-#         "traits": {
-#             "trait_a": {},
-#             "trait_b": {"value": 4},
-#             "trait_c": {"income": 1.0},
-#             "trait_e": {"value": 4, "income": 1.0},
-#         },
-#         "draggedable": True,
-#         "income_time": 0,
-#         "life_time": 0,
-#         "x": 0.5,
-#         "y": 0.5,
-#         "body_radius": 0.005,
-#         "aura_radius": 0.007,
-#     }
-# ]
 
 
 class LevelFactory:
@@ -151,7 +16,7 @@ class LevelFactory:
         available_keys = [
             "name",
             "description",
-            "number",
+            "level_number",
             "act_number",
             "units",
             "timer",
@@ -177,10 +42,10 @@ class LevelFactory:
             if not isinstance(level_config["description"], str):
                 raise ValueError("'description' must be a string")
 
-        if "number" not in level_config:
-            raise ValueError("Level config must contain 'number' key")
-        elif not isinstance(level_config["number"], int):
-            raise ValueError("'number' must be an integer")
+        if "level_number" not in level_config:
+            raise ValueError("Level config must contain 'level_number' key")
+        elif not isinstance(level_config["level_number"], int):
+            raise ValueError("'level_number' must be an integer")
 
         if "act_number" not in level_config:
             raise ValueError("Level config must contain 'act_number' key")
@@ -306,46 +171,13 @@ class LevelFactory:
         prepared_config["units"] = prepared_units_configs
         return prepared_config
 
-        # if "default_traits_pool" not in prepared_config:
-        #     prepared_config["default_traits_pool"] = {}
-        # for trait_name in trait_keys:
-        #     if (
-        #         trait_name not in prepared_config["default_traits_pool"]
-        #         or prepared_config["default_traits_pool"][trait_name] is None
-        #         or prepared_config["default_traits_pool"][trait_name] == {}
-        #     ):
-        #         prepared_config["default_traits_pool"][trait_name] = (
-        #             UnitSimilarityTrait.get_hardcoded_options_by_trait_name(trait_name)
-        #         )
-        #     elif isinstance(prepared_config["default_traits_pool"][trait_name], int):
-        #         prepared_config["default_traits_pool"][trait_name] = {
-        #             "value": prepared_config["default_traits_pool"][trait_name],
-        #             "income": UnitSimilarityTrait.get_hardcoded_option_by_trait_name_and_value(
-        #                 trait_name,
-        #                 prepared_config["default_traits_pool"][trait_name],
-        #             )[
-        #                 "income"
-        #             ],
-        #         }
-        #     elif isinstance()
-        #
-        # else:
-        #     for trait_name, options in prepared_config[
-        #         "default_traits_pool"
-        #     ].items():
-        #         if options is None:
-        #             prepared_config["default_traits_pool"][
-        #                 trait_name
-        #             ] = UnitSimilarityTrait.get_hardcoded_options_by_trait_name(
-        #                 trait_name
-        #             )
-        #         elif isinstance(options, list):
-
     @staticmethod
     def create_level_from_prepared_config(
         prepared_level_config: dict[str, Any], units: list[Unit]
     ) -> Level:
         lev = Level(
+            level_number=prepared_level_config["level_number"],
+            level_act_number=prepared_level_config["act_number"],
             units=units,
             timer=prepared_level_config["timer"],
             goal=prepared_level_config["goal_score"],
@@ -371,6 +203,3 @@ class LevelFactory:
             return level
         else:
             raise ValueError("Invalid level config")
-
-
-# t = LevelFactory.prepare_level_config(level_config)

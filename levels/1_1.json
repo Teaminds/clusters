@@ -1,65 +1,82 @@
 {
-    "name": "Complicated Level",
+    "name": "First step",
     "description": "This is a test level",
-    "number": 1,
+    "level_number": 1,
     "act_number": 1,
     "units": [
         {
             "traits": {
-                "trait_a": {},
-                "trait_b": {
-                    "value": "4"
-                },
-                "trait_c": {
-                    "income": 1.0
-                },
-                "trait_e": {
-                    "value": "4",
-                    "income": 1.0
+                "trait_a": {
+                    "value": "1"
                 }
             },
             "draggedable": true,
             "income_time": 0,
             "life_time": 0,
-            "x": 0.5,
-            "y": 0.5,
-            "body_radius": 0.005,
-            "aura_radius": 0.007
+            "x": 384,
+            "y": 503
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 384,
+            "y": 438
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "2"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 896,
+            "y": 503
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "2"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 896,
+            "y": 413
         }
     ],
-    "timer": 300,
-    "goal_score": 100,
     "default_traits_pool": {
-        "trait_a": {
-            "0": {
-                "income": 1.0
-            },
-            "4": {}
-        },
-        "trait_c": {
-            "0": {
-                "income": 5.0
-            },
-            "4": {}
-        },
         "trait_b": {
             "0": {
                 "income": 1.0
-            },
-            "1": {
+            }
+        },
+        "trait_c": {
+            "0": {
                 "income": 1.0
-            },
-            "2": {
+            }
+        },
+        "trait_d": {
+            "0": {
                 "income": 1.0
-            },
-            "3": {
-                "income": 1.0
-            },
-            "4": {
+            }
+        },
+        "trait_e": {
+            "0": {
                 "income": 1.0
             }
         }
     },
+    "timer": 30,
+    "goal_score": 20,
     "income": 0.0,
     "starting_score": 0.0
 }

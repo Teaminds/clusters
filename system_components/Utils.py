@@ -1,24 +1,13 @@
 import uuid
-from typing import Dict, List, Optional, Union
 from system_components.ResultCode import ResultCode
 
 
 class Utils:
-    """
-    Утилитарные функции для проекта Expedica.
-
-    Содержит:
-    - Генератор уникальных идентификаторов
-    - Преобразование snake_case в PascalCase
-    - Универсальную арифметическую модификацию значений
-    - Парсинг конфигурации изменений ресурсов
-    """
 
     @staticmethod
     def uid() -> str:
         """
         Генерирует уникальный строковый идентификатор (hex UUID).
-
         :return: Уникальная строка
         """
         uid = uuid.uuid4().hex
@@ -46,3 +35,7 @@ class Utils:
             return [Utils.sort_dict_recursive(i) for i in d]
         else:
             return d
+
+    @staticmethod
+    def get_2d_distance(x1: float, y1: float, x2: float, y2: float) -> float:
+        return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5

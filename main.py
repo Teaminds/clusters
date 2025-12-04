@@ -1,33 +1,33 @@
-# from levels.testo_2 import get_level
-
-# import arcade
-# from ui import game_view
+import arcade
 from system_components.Core_Builded import core
+
+
+def _initialize_core():
+    """Инициализация core из системных компонентов. Порядок имеет значение!"""
+    core.set_utils()
+    core.set_registry()
+    core.set_logger()
+    core.set_signals()
+    core.set_shortcuts()
+
+
+_initialize_core()
+
 from components.level_loader import LevelLoader
 
-core.set_utils()
-core.set_registry()
-core.set_logger()
-core.set_signals()
-core.uid = core.utils().uid()
-core.registry().register(core)
-core.logger().uid = core.utils().uid()
-core.registry().register(core.logger())
+level = LevelLoader.load_level(act_number=9, level_number=99)
 
-# t = LevelFactory.prepare_level_config(level_config=level_config)
-levels_info_list = LevelLoader.load_levels_info_list()
-level_config = LevelLoader.load_level_config(level_number=1, act_number=1)
-level = LevelLoader.load_level(level_number=1, act_number=1)
-breakpoint()
 pass
 
-
-# def main():
-#     window = arcade.Window(1200, 720, "Clusters")
-#     view = game_view.LevelView(level=l)
-#     window.show_view(view)
-#     arcade.run()
+from ui.level_view import LevelView
 
 
-# if __name__ == "__main__":
-#     main()
+def main():
+    window = arcade.Window(1200, 720, "Clusters")
+    view = LevelView(level=level)
+    window.show_view(view)
+    arcade.run()
+
+
+if __name__ == "__main__":
+    main()

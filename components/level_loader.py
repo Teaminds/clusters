@@ -5,8 +5,8 @@ from system_components.Core_Builded import core
 
 class LevelLoader:
     @staticmethod
-    def load_level_config(level_number: int, act_number: int) -> dict:
-        with open(f"levels/{level_number}_{act_number}.json", encoding="utf-8") as f:
+    def load_level_config(act_number: int, level_number: int) -> dict:
+        with open(f"levels/{act_number}_{level_number}.json", encoding="utf-8") as f:
             level_config = json.load(f)
         return level_config
 
@@ -41,9 +41,10 @@ class LevelLoader:
         return levels
 
     @staticmethod
-    def load_level(level_number: int, act_number: int) -> dict:
+    def load_level(act_number: int, level_number: int) -> dict:
         level_config = LevelLoader.load_level_config(
-            level_number=level_number, act_number=act_number
+            act_number=act_number, level_number=level_number
         )
         level = LevelFactory.create_level_from_config(level_config=level_config)
+        core.shortcuts().create(alias=f"current_level", object_uid=level.uid)
         return level

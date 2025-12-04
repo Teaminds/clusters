@@ -1,4 +1,5 @@
 import logging
+from system_components.Core_Builded import core
 
 SIGNAL_LEVEL = 25
 logging.addLevelName(
@@ -35,7 +36,9 @@ class LogSystem:
         self.logger = logging.getLogger("Clusters")
         self.logger.setLevel(logging.DEBUG)  # Общий уровень логирования
         self.log_levels = log_levels
-
+        self.uid = core.utils().uid()
+        self.system_name = "LogSystem"
+        core.registry().register(self)
         if not self.logger.hasHandlers():  # Проверяем, есть ли уже обработчики
             formatter = logging.Formatter(
                 "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

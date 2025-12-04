@@ -1,14 +1,6 @@
 from __future__ import annotations
-from calendar import c
 from system_components.Core_Builded import core
-
-# from system_components. import utils, log, registry
-# from system_components.Core import utils, log, registry
-
-from typing import Dict, List, Optional, Union
-
-# from system_components.GameObject import game
-# from system_components.Version import Version
+from typing import Dict, List
 from collections import deque
 
 
@@ -19,17 +11,19 @@ class SignalsSystem:
     subscriptions: Dict
     subscriptions_by_uid: Dict[str, List[str]]
     signals_archive: deque
+    system_name: str
 
     def __init__(self):
         self.subscriptions = {}
         self.subscriptions_by_uid = {}
         self.signals_archive = deque(maxlen=500)
         self.uid = core.utils().uid()
+        self.system_name = "SignalsSystem"
         core.registry().register(self)
 
     def subscribe(
         self,
-        signal_names: Union[str, List[str]],
+        signal_names: str | List[str],
         object_uid: str,
         method_name: str,
         allow_duplicates: bool = False,
@@ -71,7 +65,7 @@ class SignalsSystem:
                     )
 
     def unsubscribe(
-        self, signal_names: Union[str, List[str]], object_uid: str, method_name: str
+        self, signal_names: str | List[str], object_uid: str, method_name: str
     ):
         """Отписывает объект от одного или нескольких сигналов."""
         if isinstance(signal_names, str):
@@ -103,7 +97,7 @@ class SignalsSystem:
                     del self.subscriptions_by_uid[object_uid]
         self.version.increase()
 
-    def notify(self, signal_names: Union[str, List[str]], /, *args, **kwargs):
+    def notify(self, signal_names: str | List[str], /, *args, **kwargs):
         """Уведомляет всех подписчиков о наступлении одного или нескольких сигналов."""
         if isinstance(signal_names, str):
             signal_names = [signal_names]

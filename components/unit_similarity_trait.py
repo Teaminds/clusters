@@ -1,6 +1,5 @@
-from typing import Literal, Any
+from typing import Any
 from system_components.Core_Builded import core
-from components.traits_options_range import TraitsOptionsRange
 
 
 class UnitSimilarityTrait:
@@ -22,27 +21,17 @@ class UnitSimilarityTrait:
         self.uid = core.utils().uid()
         core.registry().register(self)
 
-    # @staticmethod
-    # def get_traits_keys() -> list[str]:
-    #     return list(UnitSimilarityTrait.hardcoded_options.keys())
+    def get_uid(self) -> str:
+        return self.uid
 
-    # @staticmethod
-    # def get_hardcoded_traits_options() -> dict[str, list[Any]]:
-    #     return UnitSimilarityTrait.hardcoded_options
+    def get_name(self) -> str:
+        return self.name
 
-    # @staticmethod
-    # def get_hardcoded_options_by_trait_name(trait_name: str) -> list[Any]:
-    #     return UnitSimilarityTrait.hardcoded_options[trait_name]
+    def get_value(self) -> Any:
+        return self.value
 
-    # @staticmethod
-    # def get_hardcoded_option_by_trait_name_and_value(
-    #     trait_name: str, value: Any
-    # ) -> Any:
-    #     options = UnitSimilarityTrait.hardcoded_options[trait_name]
-    #     for option in options:
-    #         if option == value:
-    #             return options[option]
-    #     raise ValueError(f"Unknown value {value} for trait {trait_name}")
+    def get_income(self) -> float:
+        return self.income
 
     def __repr__(self) -> str:
         return f"{self.name}: {self.value} (income: {self.income})"
