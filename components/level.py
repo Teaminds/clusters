@@ -258,6 +258,9 @@ class Level:
     def groups_manager_process_unit_removed(self, unit_uid: str) -> None:
         self.group_manager.process_unit_removed(unit_uid)
 
+    def get_simple_name(self) -> str:
+        return f"{self.act_number}_{self.level_number}"
+
     def __str__(self):
         return f"Level {self.level_number}"
 

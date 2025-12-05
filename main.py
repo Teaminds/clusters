@@ -13,18 +13,12 @@ def _initialize_core():
 
 _initialize_core()
 
-from components.level_loader import LevelLoader
-
-level = LevelLoader.load_level(act_number=9, level_number=99)
-
-pass
-
-from ui.level_view import LevelView
+from ui.level_select_view import LevelSelectView
 
 
 def main():
     window = arcade.Window(1200, 720, "Clusters")
-    view = LevelView(level=level)
+    view = LevelSelectView()
     window.show_view(view)
     arcade.run()
 
