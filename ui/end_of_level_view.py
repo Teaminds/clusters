@@ -1,9 +1,3 @@
-from calendar import c
-from operator import mul
-from pydoc import text
-import textwrap
-import time
-from unittest import loader
 import arcade
 from arcade.gui import (
     UIAnchorLayout,
@@ -12,8 +6,6 @@ from arcade.gui import (
     UIOnActionEvent,
     UIButtonRow,
     UIView,
-    UIFlatButton,
-    UITextArea,
 )
 from components.level import Level
 from system_components.Core_Builded import core
@@ -31,6 +23,8 @@ DETAILS_FONT = "arial"
 
 
 class EndOfLevelView(UIView):
+    """Представление для экрана окончания уровня (победа/поражение)."""
+
     def __init__(
         self,
         current_level: Level,
@@ -45,8 +39,6 @@ class EndOfLevelView(UIView):
         }
         level = LevelLoader.load_level(current_level.get_simple_name())
         next_level = LevelLoader.load_next_level(current_level.get_simple_name())
-
-        # Setup side navigation
         center = UIButtonRow(vertical=True, size_hint=(1, 0.3))
         center.add(
             UILabel(
@@ -62,7 +54,6 @@ class EndOfLevelView(UIView):
 
         center.with_padding(all=10)
         center.with_background(color=arcade.uicolor.BLACK)
-        # nav_side.with_border(width=2, color=arcade.uicolor.WHITE)
         center.add_button("Перезапустить уровень", size_hint=(0.3, 0.1), align="center")
 
         next_level = LevelLoader.load_next_level(current_level.get_simple_name())

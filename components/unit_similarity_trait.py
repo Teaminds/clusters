@@ -3,6 +3,7 @@ from system_components.Core_Builded import core
 
 
 class UnitSimilarityTrait:
+    """Класс, представляющий черту сходства юнита."""
 
     name: str
     income: float
