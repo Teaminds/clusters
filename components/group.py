@@ -76,10 +76,11 @@ class Group:
         for unit_uid in self.units_with_neighbors.keys():
             unit: Unit = core.registry().get(unit_uid)
             if unit.is_dragging() is False and unit.is_active() is True:
-                for trait_name, trait_value in unit.get_traits().items():
+                for trait_name, trait_body in unit.get_traits().items():
                     tempo.setdefault(trait_name, [])
+                    trait_value = trait_body.get_value()
                     if trait_value not in tempo[trait_name]:
-                        tempo[trait_name].append(trait_value.value)
+                        tempo[trait_name].append(trait_value)
         for trait_name, trait_values in tempo.items():
             final[trait_name] = len(trait_values)
         self.unique_traits_counts = final

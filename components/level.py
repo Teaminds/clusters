@@ -94,9 +94,7 @@ class Level:
                 unique_count_in_group = (
                     group.get_unique_trait_count(trait_name) if group is not None else 0
                 )
-                unique_count_in_level = self.unique_traits_counts[trait_name][
-                    trait_value
-                ]
+                unique_count_in_level = self.get_unique_trait_types_count(trait_name)
                 trait_base_income = trait_income
                 income += self.calculate_trait_income(
                     trait_base_income=trait_base_income,
@@ -134,11 +132,12 @@ class Level:
         :param beta: степень влияния размера группы (по умолчанию 1)
         :return: доход от признака для юнита
         """
-        if group_units_count <= 1:
+        if group_units_count == 1:
             return 0.0  # Юнит вне группы
-        if unique_count_in_group >= unique_count_in_level:
+        if unique_count_in_group == unique_count_in_level:
             return 0.0  # Полная разнотипность, доход признака нулевой
-
+        if unique_count_in_level == 1:
+            return 0.0  # Все юниты одинаковы, доход признака нулевой
         homogeneity = 1 - (unique_count_in_group - 1) / (
             unique_count_in_level - 1
         )  # Гомогенность от 0 до 1
@@ -147,8 +146,8 @@ class Level:
         )  # Размер группы от 0 до 1
         result = (
             trait_base_income
-            * (homogeneity**alpha)
-            * (group_size_ratio**beta)
+            * (homogeneity * alpha)
+            * (group_size_ratio * beta)
             * weather_effect
             * zone_effect
         )
@@ -191,6 +190,11 @@ class Level:
             if unit.active is True:
                 for trait_name, trait_body in unit.get_traits().items():
                     self.increase_unique_trait_types_count(trait_name, trait_body.value)
+
+    def get_unique_trait_types_count(self, trait_name) -> int:
+        if trait_name in self.unique_traits_counts:
+            return len(self.unique_traits_counts[trait_name])
+        return 0
 
     def recalc_units_activation(self):
         units_uids_planned = list(self.units_planned.keys())
