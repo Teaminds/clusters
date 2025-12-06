@@ -25,6 +25,7 @@ class LevelView(arcade.View):
         self.drag_offset: tuple[int, int] = (0, 0)
         self.score_timer: float = 0.0
         self.state: str = "playing"
+        self.last_activation_check_time: float = 0
 
     def on_draw(self):
         self.clear()
@@ -46,13 +47,19 @@ class LevelView(arcade.View):
                 self.state = "win"
         if self.state == "playing":
             units_sprites = arcade.SpriteList()
-            for unit in planned_units:
-                if unit.is_active() is False:
-                    unit.starting_life_try(time_now=level_timer)
-                    pass
+            # if (
+            #     self.last_activation_check_time - level_timer >= 1.0
+            #     or self.last_activation_check_time == 0
+            # ):
+            #     self.level.recalc_units_activation()
+            #     self.last_activation_check_time = level_timer
+            # for unit in planned_units:
+            #     # if unit.is_active() is False:
+            #     unit.starting_life_try(time_now=level_timer)
+            #     pass
             for unit in active_units:
                 if unit.is_active() is True:
-                    unit.spend_life_time_check(time_now=level_timer)
+                    # unit.spend_life_time_check(time_now=level_timer)
                     x, y = unit.get_position()
                     radius = unit.get_radius()
                     aura_radius = unit.get_aura_radius()
