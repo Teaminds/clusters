@@ -1,132 +1,204 @@
 {
-    "name": "Добавим цветов",
-    "description": "Цветов может быть целых пять!",
+    "name": "Формы тоже бывают разные",
+    "description": "",
     "act_number": 1,
-    "level_number": 2,
+    "level_number": 3,
     "units": [
         {
             "traits": {
-                "trait_a": {
+                "trait_b": {
                     "value": "0"
-                }
-            },
-            "draggedable": true,
-            "income_time": 0,
-            "life_time": 0,
-            "x": 220,
-            "y": 150
-        },
-        {
-            "traits": {
-                "trait_a": {
-                    "value": "0"
-                }
-            },
-            "draggedable": true,
-            "income_time": 0,
-            "life_time": 0,
-            "x": 320,
-            "y": 110
-        },
-        {
-            "traits": {
-                "trait_a": {
-                    "value": "1"
                 }
             },
             "draggedable": true,
             "income_time": 0,
             "life_time": 0,
             "x": 180,
-            "y": 260
+            "y": 120
         },
         {
             "traits": {
-                "trait_a": {
-                    "value": "1"
+                "trait_b": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 260,
+            "y": 90
+        },
+        {
+            "traits": {
+                "trait_b": {
+                    "value": "0"
                 }
             },
             "draggedable": true,
             "income_time": 0,
             "life_time": 0,
             "x": 330,
-            "y": 260
+            "y": 150
         },
         {
             "traits": {
-                "trait_a": {
-                    "value": "2"
+                "trait_b": {
+                    "value": "1"
                 }
             },
             "draggedable": true,
             "income_time": 0,
             "life_time": 0,
-            "x": 250,
-            "y": 340
+            "x": 210,
+            "y": 230
         },
         {
             "traits": {
-                "trait_a": {
-                    "value": "2"
+                "trait_b": {
+                    "value": "1"
                 }
             },
             "draggedable": true,
             "income_time": 0,
             "life_time": 0,
-            "x": 140,
+            "x": 300,
+            "y": 250
+        },
+        {
+            "traits": {
+                "trait_b": {
+                    "value": "1"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 150,
             "y": 180
         },
         {
             "traits": {
-                "trait_a": {
+                "trait_b": {
+                    "value": "2"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 720,
+            "y": 210
+        },
+        {
+            "traits": {
+                "trait_b": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 790,
+            "y": 170
+        },
+        {
+            "traits": {
+                "trait_b": {
+                    "value": "2"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 860,
+            "y": 240
+        },
+        {
+            "traits": {
+                "trait_b": {
                     "value": "3"
                 }
             },
             "draggedable": true,
             "income_time": 0,
             "life_time": 0,
-            "x": 820,
-            "y": 380
+            "x": 700,
+            "y": 310
         },
         {
             "traits": {
-                "trait_a": {
+                "trait_b": {
                     "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 830,
+            "y": 340
+        },
+        {
+            "traits": {
+                "trait_b": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 780,
+            "y": 440
+        },
+        {
+            "traits": {
+                "trait_b": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 860,
+            "y": 430
+        },
+        {
+            "traits": {
+                "trait_b": {
+                    "value": "4"
                 }
             },
             "draggedable": true,
             "income_time": 0,
             "life_time": 0,
             "x": 930,
-            "y": 300
-        },
-        {
-            "traits": {
-                "trait_a": {
-                    "value": "4"
-                }
-            },
-            "draggedable": true,
-            "income_time": 0,
-            "life_time": 0,
-            "x": 880,
             "y": 480
         },
         {
             "traits": {
-                "trait_a": {
+                "trait_b": {
                     "value": "4"
                 }
             },
             "draggedable": true,
             "income_time": 0,
             "life_time": 0,
-            "x": 760,
-            "y": 540
+            "x": 810,
+            "y": 560
+        },
+        {
+            "traits": {
+                "trait_b": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 900,
+            "y": 600
         }
     ],
     "default_traits_pool": {
-        "trait_b": {
+        "trait_a": {
             "0": {
                 "income": 0.0
             }
@@ -148,7 +220,7 @@
         }
     },
     "timer": 30,
-    "goal_score": 180,
+    "goal_score": 360,
     "income": 0.0,
     "starting_score": 0.0
 }

@@ -1,88 +1,59 @@
 {
-    "name": "Random",
-    "description": "This is a test level",
+    "name": "Случайный набор фигур (каждый раз новый)",
+    "description": "Random",
     "level_number": 99,
     "act_number": 9,
     "units": [
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        },
-        {
-            "income_time": 0,
-            "life_time": 0
-        }
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
     ],
     "timer": 240,
-    "goal_score": 1000,
+    "goal_score": 10000,
     "income": 0.0,
     "starting_score": 0.0
 }

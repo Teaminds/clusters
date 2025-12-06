@@ -1,0 +1,289 @@
+{
+    "name": "Пять форм, пять цветов - что же выбрать?",
+    "description": "",
+    "act_number": 1,
+    "level_number": 4,
+    "units": [
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "1"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "2"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "0"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "2"
+                },
+                "trait_b": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "2"
+                },
+                "trait_b": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "2"
+                },
+                "trait_b": {
+                    "value": "1"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "1"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "2"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "2"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "0"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "0"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0
+        }
+    ],
+    "default_traits_pool": {
+        "trait_c": {
+            "0": {
+                "income": 0.0
+            }
+        },
+        "trait_d": {
+            "0": {
+                "income": 0.0
+            }
+        },
+        "trait_e": {
+            "0": {
+                "income": 0.0
+            }
+        }
+    },
+    "timer": 45,
+    "goal_score": 1000,
+    "income": 0.0,
+    "starting_score": 0.0
+}
