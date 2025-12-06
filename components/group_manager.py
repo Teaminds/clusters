@@ -38,7 +38,6 @@ class GroupManager:
     ) -> list[str]:
         neighbors_uids = []
         unit: Unit = core.registry().get(unit_uid)
-        # level: Level = core.shortcuts().get("current_level")
         for other_unit_uid in other_units_ids:
             if other_unit_uid != unit_uid:
                 unit: Unit = core.registry().get(unit_uid)

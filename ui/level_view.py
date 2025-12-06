@@ -5,6 +5,7 @@ from system_components.Core_Builded import core
 from typing import TYPE_CHECKING
 from components.level_loader import LevelLoader
 from ui.drawer import draw_unit
+from ui.end_of_level_view import EndOfLevelView
 
 if TYPE_CHECKING:
     from components.level import Level
@@ -107,50 +108,32 @@ class LevelView(arcade.View):
                     anchor_y="top",
                 )
         elif self.state == "win":
-            arcade.draw_text(
-                "🎉 Победа!",
-                620,
-                320,
-                arcade.color.GREEN_YELLOW,
-                84,
-                anchor_x="center",
-            )
-            arcade.draw_text(
-                "Нажмите R чтобы начать заново",
-                620,
-                288,
-                arcade.color.WHITE,
-                12,
-                anchor_x="center",
+            arcade.get_window().show_view(
+                EndOfLevelView(
+                    current_level=self.level,
+                    state=self.state,
+                )
             )
 
         elif self.state == "lose":
-            arcade.draw_text(
-                "💀 Поражение",
-                620,
-                320,
-                arcade.color.RED,
-                84,
-                anchor_x="center",
-            )
-            arcade.draw_text(
-                "Нажмите R чтобы начать заново",
-                620,
-                288,
-                arcade.color.WHITE,
-                12,
-                anchor_x="center",
+            arcade.get_window().show_view(
+                EndOfLevelView(
+                    current_level=self.level,
+                    state=self.state,
+                )
             )
 
     def on_key_release(self, symbol, modifiers):
         if symbol == arcade.key.R:
-            self.level = LevelLoader.load_level(
-                self.level.get_level_number(), self.level.get_level_act_number()
-            )
+            self.level = LevelLoader.load_level(self.level.get_simple_name())
             self.dragging_unit = None
             self.drag_offset = (0, 0)
             self.score_timer = 0.0
             self.state = "playing"
+        elif symbol == arcade.key.ESCAPE:
+            from ui.level_select_view import LevelSelectView
+
+            arcade.get_window().show_view(LevelSelectView())
         return super().on_key_release(symbol, modifiers)
 
     def on_update(self, delta_time: float):
