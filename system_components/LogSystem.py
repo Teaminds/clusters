@@ -17,7 +17,7 @@ logging.Logger.signal = signal
 
 class LogSystem:
     """
-    Гибкая система логирования для Expedica.
+    Гибкая система логирования.
     - log_file: имя файла (если None, лог в файл не ведётся).
     - log_to_console: логировать ли в консоль.
     - log_levels: список уровней, которые записываются.
