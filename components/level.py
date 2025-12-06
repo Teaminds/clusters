@@ -117,7 +117,7 @@ class Level:
         all_units_count: int,
         weather_effect: float = 1.0,
         zone_effect: float = 1.0,
-        alpha: float = 2.0,
+        alpha: float = 5.0,
         beta: float = 1.0,
     ) -> float:
         """
@@ -138,8 +138,8 @@ class Level:
             return 0.0  # Полная разнотипность, доход признака нулевой
         if unique_count_in_level == 1:
             return 0.0  # Все юниты одинаковы, доход признака нулевой
-        homogeneity = 1 - (unique_count_in_group - 1) / (
-            unique_count_in_level - 1
+        homogeneity = 1 - (
+            (unique_count_in_group - 1) / (unique_count_in_level - 1)
         )  # Гомогенность от 0 до 1
         group_size_ratio = (
             group_units_count / all_units_count
