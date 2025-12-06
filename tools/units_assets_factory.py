@@ -2,6 +2,10 @@ import os
 from PIL import Image, ImageOps
 from itertools import product
 
+"""
+Генератор ассетов юнитов путём комбинирования частей.
+"""
+
 # Настройки
 SIZE = (128, 128)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

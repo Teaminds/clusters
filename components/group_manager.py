@@ -8,6 +8,8 @@ if TYPE_CHECKING:
 
 
 class GroupManager:
+    """Менеджер групп юнитов на уровне."""
+
     uid: str
     groups: dict[str, Group] = {}  # ключ: uid группы, значение: группа
 
@@ -17,16 +19,19 @@ class GroupManager:
         self.groups = {}
 
     def _create_group(self) -> Group:
+        """Создаёт новую группу и добавляет её в менеджер."""
         new_group = Group()
         new_group_uid = new_group.get_uid()
         self.groups[new_group_uid] = new_group
         return new_group
 
     def _remove_group(self, group_uid: str) -> None:
+        """Удаляет группу из менеджера по её UID."""
         if group_uid in self.groups:
             del self.groups[group_uid]
 
     def _get_groups_with_unit(self, unit_uid: str) -> list[Group]:
+        """Возвращает список групп, в которых находится юнит с заданным UID."""
         groups_uids_with_unit = []
         for group in self.groups.values():
             if group.is_unit_in_group_by_uid(unit_uid):
@@ -36,6 +41,7 @@ class GroupManager:
     def _found_neighbors_of_unit(
         self, unit_uid: str, other_units_ids: list[str]
     ) -> list[str]:
+        """Ищет соседей юнита среди других юнитов по их UID."""
         neighbors_uids = []
         unit: Unit = core.registry().get(unit_uid)
         for other_unit_uid in other_units_ids:
@@ -47,6 +53,7 @@ class GroupManager:
         return neighbors_uids
 
     def _merge_groups(self, main_group_uid: str, other_group_uid: str) -> None:
+        """Объединяет две группы, перемещая все юниты из другой группы в основную."""
         other_group: Group = core.registry().get(other_group_uid)
         other_group_uids = other_group.get_list_of_units_uids()
         for unit_uid in other_group_uids:
@@ -56,6 +63,7 @@ class GroupManager:
         self._remove_group(other_group_uid)
 
     def process_unit_placed(self, unit_uid: str, other_units_ids: list[str]) -> None:
+        """Обрабатывает размещение юнита, обновляя группы и соседей."""
         if unit_uid in other_units_ids:
             other_units_ids.remove(unit_uid)
         neigbours = self._found_neighbors_of_unit(unit_uid, other_units_ids)
@@ -90,6 +98,7 @@ class GroupManager:
                 biggest_group.add_unit(unit_no_group, [unit_uid])
 
     def process_unit_removed(self, unit_uid: str) -> None:
+        """Обрабатывает удаление юнита, обновляя группы и соседей."""
         former_groups = self._get_groups_with_unit(unit_uid)
         if len(former_groups) == 0:
             return
@@ -149,6 +158,7 @@ class GroupManager:
                         new_group.add_unit(current_unit_uid, current_neighbors_uids)
 
     def _get_distance(self, unit_a: Unit | str, unit_b: Unit | str) -> float:
+        """Вычисляет расстояние между двумя юнитами или их UID."""
         if isinstance(unit_a, Unit):
             unit_1 = unit_a
         elif isinstance(unit_a, str):
@@ -166,6 +176,7 @@ class GroupManager:
         return core.utils().get_2d_distance(x1, y1, x2, y2)
 
     def get_unit_group_uid(self, unit_uid: str) -> str | None:
+        """Возвращает UID группы, в которой находится юнит, или None, если юнит не в группе."""
         groups_with_unit = self._get_groups_with_unit(unit_uid)
         if len(groups_with_unit) == 0:
             return None

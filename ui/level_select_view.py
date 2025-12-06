@@ -1,6 +1,4 @@
 from system_components.Core_Builded import core
-from operator import mul
-from pydoc import text
 import textwrap
 import time
 import arcade
@@ -31,13 +29,13 @@ DETAILS_FONT = "arial"
 
 
 class LevelSelectView(UIView):
+    """Представление для выбора уровня."""
+
     def __init__(self):
         super().__init__()
         self.levels = LevelLoader.load_levels_info_list()
         root = self.add_widget(UIAnchorLayout())
         self.levels_simple = LevelLoader.load_simple_levels_list()
-
-        # Setup side navigation
         nav_side = UIButtonRow(vertical=True, size_hint=(0.3, 1))
         nav_side.add(
             UILabel(
@@ -53,17 +51,13 @@ class LevelSelectView(UIView):
 
         nav_side.with_padding(all=10)
         nav_side.with_background(color=arcade.uicolor.BLACK)
-        # nav_side.with_border(width=2, color=arcade.uicolor.WHITE)
         for act_number, levels_in_act in self.levels.items():
             for level_number, level_info in levels_in_act.items():
                 button_text = f"{act_number}-{level_number}: {level_info['name']}"
                 nav_side.add_button(
                     button_text,
-                    # style=UIFlatButton.STYLE_BLUE,
-                    # border=arcade.uicolor.WHITE,
                     size_hint=(1, 0.1),
                     align="left",
-                    # multiline=True,
                 )
 
         root.add(nav_side, anchor_x="left", anchor_y="top")
@@ -71,8 +65,6 @@ class LevelSelectView(UIView):
         @nav_side.event("on_action")
         def on_action(event: UIOnActionEvent):
             level_simple_name = event.action.split(":")[0].strip().replace("-", "_")
-            # level_info = self.levels_simple.get(level_simple_name)
-            # if level_info:
             level = LevelLoader.load_level(
                 simple_name=level_simple_name,
             )
@@ -82,12 +74,10 @@ class LevelSelectView(UIView):
 
         self._body.with_padding(all=20)
         root.add(self._body, anchor_x="right", anchor_y="top")
-
-        # init start widgets
         self._show_start_widgets()
 
     def _show_start_widgets(self):
-        """Show a short introduction message."""
+        """Отображает приветственный текст и ссылку на исходный код."""
         self._body.clear()
         self._body.add(
             UITextArea(
@@ -124,6 +114,7 @@ class LevelSelectView(UIView):
 
         @open_sourcecode.event("on_click")
         def on_click(_):
+            """Открывает страницу с исходным кодом игры в браузере."""
             import webbrowser
 
             webbrowser.open("https://github.com/Teaminds/clusters")
