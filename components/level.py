@@ -27,6 +27,7 @@ class Level:
     score: float
     unique_traits_counts: dict[str, int]
     uid: str
+    unit_activation_check_checkpoint: float
 
     def __init__(
         self,
@@ -54,6 +55,7 @@ class Level:
         self.score: float = score
         self.group_manager: GroupManager = GroupManager()
         self.unique_traits_counts: dict[str, dict[str, int]] = {}
+        self.unit_activation_check_checkpoint: float = 0.0
         self.uid: str = core.utils().uid()
         core.registry().register(self)
         core.signals().subscribe(
@@ -209,32 +211,32 @@ class Level:
 
     def recalc_units_activation(self):
         """Пересчитывает активацию юнитов на уровне."""
-        units_uids_planned = list(self.units_planned.keys())
-        for unit_uid in units_uids_planned:
-            unit = self.units_planned[unit_uid]
-            if (
-                unit.active is False
-                and self.time >= unit.income_time
-                and self.time <= unit.income_time + unit.life_time
-            ):
-                self.units_active[unit_uid] = unit
-                del self.units_planned[unit_uid]
+        units_planned = list(self.get_planned_units())
+        for unit in units_planned:
+            if unit.is_active() is False and self.time >= unit.income_time:
+                self.units_active[unit.get_uid()] = unit
+                del self.units_planned[unit.get_uid()]
                 unit.activate()
-                self.groups_manager_process_unit_placed(unit_uid=unit_uid)
+                self.groups_manager_process_unit_placed(unit_uid=unit.get_uid())
 
-        units_uids_active = list(self.units_active.keys())
-        for unit_uid in units_uids_active:
-            unit = self.units_active[unit_uid]
-            if unit.active is True and self.time > unit.income_time + unit.life_time:
-                self.units_wasted[unit_uid] = unit
-                del self.units_active[unit_uid]
+        units_active = list(self.get_active_units())
+        for unit in units_active:
+            if (
+                unit.is_active() is True
+                and self.time > unit.income_time + unit.life_time
+            ):
+                self.units_wasted[unit.get_uid()] = unit
+                del self.units_active[unit.get_uid()]
                 unit.deactivate()
-                self.groups_manager_process_unit_removed(unit_uid=unit_uid)
+                self.groups_manager_process_unit_removed(unit_uid=unit.get_uid())
 
     def update_timer(self, delta_time: float):
         """Обновляет таймер уровня и пересчитывает активацию юнитов."""
         self.timer += delta_time
-        self.recalc_units_activation()
+        self.time += delta_time * -1
+        if self.time >= self.unit_activation_check_checkpoint + 1:
+            self.recalc_units_activation()
+            self.unit_activation_check_checkpoint = self.time
 
     def get_active_units(self) -> list[Unit]:
         """Возвращает список активных юнитов на уровне."""

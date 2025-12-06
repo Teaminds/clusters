@@ -366,16 +366,16 @@ class LevelFactory:
             prepared_config["draggedable"] = choice([True, False])
         if "income_time" not in prepared_config:
             immediate_income_time = choice([True, False])
-            if immediate_income_time:
+            if immediate_income_time is True:
                 prepared_config["income_time"] = 0
             else:
-                prepared_config["income_time"] = uniform(0, level_timer)
+                prepared_config["income_time"] = uniform(1, level_timer)
         if "life_time" not in prepared_config:
             endless_life_time = choice([True, False])
-            if endless_life_time:
+            if endless_life_time is True:
                 prepared_config["life_time"] = float("+inf")
             else:
-                prepared_config["life_time"] = uniform(0.01, level_timer * 2)
+                prepared_config["life_time"] = uniform(0.01, level_timer)
         if "life_time" == 0:
             prepared_config["life_time"] = float("+inf")
         if "x" not in prepared_config:
