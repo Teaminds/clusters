@@ -16,6 +16,8 @@ AURA_ALPHA = 40  # прозрачность ауры
 
 
 class LevelView(arcade.View):
+    """Представление для игрового уровня."""
+
     def __init__(self, level: Level):
         super().__init__()
         self.level: Level = level
@@ -58,7 +60,7 @@ class LevelView(arcade.View):
                         unit.get_uid()
                     )
                     unit_group: Group = core.registry().get(unit_group_uid)
-                    # AURA
+                    # АУРА
                     if unit_group is not None:
                         arcade.draw_circle_filled(
                             center_x=x,
@@ -124,6 +126,7 @@ class LevelView(arcade.View):
             )
 
     def on_key_release(self, symbol, modifiers):
+        """Обрабатывает нажатия клавиш."""
         if symbol == arcade.key.R:
             self.level = LevelLoader.load_level(self.level.get_simple_name())
             self.dragging_unit = None
@@ -137,6 +140,7 @@ class LevelView(arcade.View):
         return super().on_key_release(symbol, modifiers)
 
     def on_update(self, delta_time: float):
+        """Обновляет состояние уровня и отображает информацию."""
         if self.state == "playing":
             self.level.update_timer(-delta_time)
 
@@ -160,6 +164,7 @@ class LevelView(arcade.View):
                 )
 
     def on_mouse_press(self, x, y, button, modifiers):
+        """Обрабатывает нажатия мыши. Юнит ищется не по клику на объект а по координатам. Это ужасно, но уж как есть."""
         for unit in reversed(list(self.level.get_active_units())):  # сверху вниз
             if unit.is_active() and unit.distance_to((x, y)) <= unit.get_radius():
                 core.signals().notify("unit_removed")
@@ -173,6 +178,7 @@ class LevelView(arcade.View):
                 break
 
     def on_mouse_drag(self, x, y, dx, dy, buttons, modifiers):
+        """Обрабатывает перетаскивание юнита мышью."""
         if self.dragging_unit:
             new_x = x - self.drag_offset[0]
             new_y = y - self.drag_offset[1]
@@ -199,8 +205,10 @@ class LevelView(arcade.View):
             self.dragging_unit.y = new_y
 
     def on_mouse_release(self, x, y, button, modifiers):
-        self.dragging_unit.set_dragged(False)
-        self.level.groups_manager_process_unit_placed(self.dragging_unit.get_uid())
-        core.signals().notify("unit_moved")
-        core.signals().notify("specific_unit_moved", self.dragging_unit.uid)
-        self.dragging_unit = None
+        """Обрабатывает отпускание юнита мышью."""
+        if self.dragging_unit:
+            self.dragging_unit.set_dragged(False)
+            self.level.groups_manager_process_unit_placed(self.dragging_unit.get_uid())
+            core.signals().notify("unit_moved")
+            core.signals().notify("specific_unit_moved", self.dragging_unit.uid)
+            self.dragging_unit = None

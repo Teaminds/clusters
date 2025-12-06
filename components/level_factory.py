@@ -9,9 +9,20 @@ from random import choice, uniform
 
 
 class LevelFactory:
+    """
+    Фабрика уровней из конфигурационных данных. Предоставляет методы для:
+    - Проверки валидности конфигурации уровня и юнитов
+    - Подготовки конфигурации уровня и юнитов (установка значений по умолчанию)
+    - Создания уровней и юнитов из подготовленных конфигураций
+
+    В будущем с добавлении schema.json для уровней можно переписать на схему.
+
+    Все методы статические, так как фабрика не хранит состояние.
+    """
 
     @staticmethod
-    def check_level_config(level_config: dict) -> bool:
+    def _check_level_config(level_config: dict) -> bool:
+        """Проверяет валидность конфигурации уровня."""
         available_keys = [
             "name",
             "description",
@@ -115,9 +126,10 @@ class LevelFactory:
         return True
 
     @staticmethod
-    def prepare_level_config(
+    def _prepare_level_config(
         level_config: dict[str, Any],
     ) -> dict[str, Any]:
+        """Подготавливает конфигурацию уровня, устанавливая значения по умолчанию и проверяя трейты."""
         prepared_config = level_config.copy()
         trait_keys = TraitsOptionsRange.get_traits_keys()
         prepared_config.setdefault("description", "")
@@ -164,13 +176,13 @@ class LevelFactory:
                             ]["value"] = trait_value
         prepared_units_configs = []
         for unit_cfg in prepared_config["units"]:
-            if LevelFactory.check_unit_config(
+            if LevelFactory._check_unit_config(
                 unit_config=unit_cfg,
                 trait_options=prepared_config["default_traits_pool"],
                 level_timer=prepared_config["timer"],
             ):
                 prepared_units_configs.append(
-                    LevelFactory.prepare_unit_config(
+                    LevelFactory._prepare_unit_config(
                         unit_config=unit_cfg,
                         level_timer=prepared_config["timer"],
                         trait_options=prepared_config["default_traits_pool"],
@@ -180,9 +192,10 @@ class LevelFactory:
         return prepared_config
 
     @staticmethod
-    def create_level_from_prepared_config(
+    def _create_level_from_prepared_config(
         prepared_level_config: dict[str, Any], units: list[Unit]
     ) -> Level:
+        """Создаёт уровень из подготовленной конфигурации и списка юнитов."""
         lev = Level(
             level_number=prepared_level_config["level_number"],
             level_act_number=prepared_level_config["act_number"],
@@ -198,14 +211,15 @@ class LevelFactory:
 
     @staticmethod
     def create_level_from_config(level_config: dict[str, Any]) -> Level:
-        if LevelFactory.check_level_config(level_config):
-            prepared_level_config = LevelFactory.prepare_level_config(level_config)
-            units = LevelFactory.create_many_units_from_list_of_configs(
+        """Создаёт уровень из конфигурации, проверяя и подготавливая её."""
+        if LevelFactory._check_level_config(level_config):
+            prepared_level_config = LevelFactory._prepare_level_config(level_config)
+            units = LevelFactory._create_many_units_from_list_of_configs(
                 prepared_level_config["units"],
                 prepared_level_config["default_traits_pool"],
                 prepared_level_config["timer"],
             )
-            level = LevelFactory.create_level_from_prepared_config(
+            level = LevelFactory._create_level_from_prepared_config(
                 prepared_level_config, units
             )
             return level
@@ -213,11 +227,12 @@ class LevelFactory:
             raise ValueError("Invalid level config")
 
     @staticmethod
-    def check_unit_config(
+    def _check_unit_config(
         unit_config: dict[str, Any],
         trait_options: dict[str, list[int]],
         level_timer: float | int,
     ) -> bool:
+        """Проверяет валидность конфигурации юнита."""
         trait_keys = TraitsOptionsRange.get_traits_keys()
 
         available_keys = [
@@ -321,11 +336,12 @@ class LevelFactory:
         return True
 
     @staticmethod
-    def prepare_unit_config(
+    def _prepare_unit_config(
         unit_config: dict[str, Any],
         level_timer: float | int,
         trait_options: Optional[dict[str, list[int]]] = {},
     ) -> dict[str, Any]:
+        """Подготавливает конфигурацию юнита, устанавливая значения по умолчанию."""
         prepared_config = unit_config.copy()
         if "traits" not in prepared_config:
             prepared_config["traits"] = {}
@@ -374,9 +390,10 @@ class LevelFactory:
         return prepared_config
 
     @staticmethod
-    def create_one_unit_from_prepared_unit_config(
+    def _create_one_unit_from_prepared_unit_config(
         prepared_unit_config: dict[str, Any],
     ) -> Unit:
+        """Создаёт юнит из подготовленной конфигурации."""
         unit_traits: dict[str, UnitSimilarityTrait] = {}
         for trait_name, trait_body in prepared_unit_config["traits"].items():
             unit_traits[trait_name] = UnitSimilarityTrait(
@@ -396,18 +413,19 @@ class LevelFactory:
         )
 
     @staticmethod
-    def create_many_units_from_list_of_configs(
+    def _create_many_units_from_list_of_configs(
         list_of_units_configs: list[dict[str, Any]],
         trait_options: dict[str, list[int]],
         level_timer: float | int,
     ) -> list[Unit]:
+        """Создаёт множество юнитов из списка конфигураций юнитов."""
         units: list[Unit] = []
         for unit_config in list_of_units_configs:
-            if LevelFactory.check_unit_config(unit_config, trait_options, level_timer):
-                prepared_unit_config = LevelFactory.prepare_unit_config(
+            if LevelFactory._check_unit_config(unit_config, trait_options, level_timer):
+                prepared_unit_config = LevelFactory._prepare_unit_config(
                     unit_config, level_timer, trait_options
                 )
-                unit = LevelFactory.create_one_unit_from_prepared_unit_config(
+                unit = LevelFactory._create_one_unit_from_prepared_unit_config(
                     prepared_unit_config
                 )
                 units.append(unit)

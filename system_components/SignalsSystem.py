@@ -95,7 +95,6 @@ class SignalsSystem:
                     del self.subscriptions_by_uid[object_uid][method_name]
                 if len(self.subscriptions_by_uid[object_uid]) == 0:
                     del self.subscriptions_by_uid[object_uid]
-        self.version.increase()
 
     def notify(self, signal_names: str | List[str], /, *args, **kwargs):
         """Уведомляет всех подписчиков о наступлении одного или нескольких сигналов."""

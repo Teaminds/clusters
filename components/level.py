@@ -10,6 +10,8 @@ if TYPE_CHECKING:
 
 
 class Level:
+    """Класс уровня, содержащий юниты, таймер, цель и менеджер групп."""
+
     level_name: str
     level_description: str
     level_number: int
@@ -63,9 +65,11 @@ class Level:
         # self.group_manager.refresh_groups()
 
     def level_score_income(self):
+        """Обновляет счёт уровня, добавляя доход от активных юнитов."""
         self.score += self.calculate_level_income()
 
     def calculate_level_income(self) -> float:
+        """Вычисляет общий доход уровня от всех активных юнитов."""
         income = 0.0
         for unit in self.units_active.values():
             if unit.dragging is False and unit.active is True:
@@ -78,6 +82,7 @@ class Level:
         weather_effect: float = 1.0,
         zone_effect: float = 1.0,
     ) -> float:
+        """Вычисляет доход от одного юнита на уровне."""
         income = 0.0
         if unit.dragging is False:
             unit_uid = unit.get_uid()
@@ -154,6 +159,7 @@ class Level:
         return result
 
     def increase_unique_trait_types_count(self, trait_name: str, trait_value: Any):
+        """Увеличивает счётчик уникальных типов признаков."""
         if trait_name not in self.unique_traits_counts:
             self.unique_traits_counts[trait_name] = {}
         if trait_value not in self.unique_traits_counts[trait_name]:
@@ -161,6 +167,7 @@ class Level:
         self.unique_traits_counts[trait_name][trait_value] += 1
 
     def decrease_unique_trait_types_count(self, trait_name: str, trait_value: Any):
+        """Уменьшает счётчик уникальных типов признаков."""
         if trait_name in self.unique_traits_counts:
             self.unique_traits_counts[trait_name][trait_value] -= 1
             if self.unique_traits_counts[trait_name][trait_value] < 0:
@@ -173,18 +180,21 @@ class Level:
             del self.unique_traits_counts[trait_name][trait_value]
 
     def increase_unique_trait_type_count_by_unit(self, unit_uid: str):
+        """Увеличивает счётчик уникальных типов признаков для юнита."""
         unit = core.registry().get(unit_uid)
         for trait_name in unit.get_traits().keys():
             value = unit.get_trait_value(trait_name)
             self.increase_unique_trait_types_count(trait_name, value)
 
     def decrease_unique_trait_type_count_by_unit(self, unit_uid: str):
+        """Уменьшает счётчик уникальных типов признаков для юнита."""
         unit = core.registry().get(unit_uid)
         for trait_name in unit.get_traits().keys():
             value = unit.get_trait_value(trait_name)
             self.decrease_unique_trait_types_count(trait_name, value)
 
     def recalc_unique_trait_types_count(self):
+        """Пересчитывает счётчики уникальных типов признаков на уровне."""
         self.unique_traits_counts.clear()
         for unit in self.units_active.values():
             if unit.active is True:
@@ -192,11 +202,13 @@ class Level:
                     self.increase_unique_trait_types_count(trait_name, trait_body.value)
 
     def get_unique_trait_types_count(self, trait_name) -> int:
+        """Возвращает количество уникальных типов признаков на уровне."""
         if trait_name in self.unique_traits_counts:
             return len(self.unique_traits_counts[trait_name])
         return 0
 
     def recalc_units_activation(self):
+        """Пересчитывает активацию юнитов на уровне."""
         units_uids_planned = list(self.units_planned.keys())
         for unit_uid in units_uids_planned:
             unit = self.units_planned[unit_uid]
@@ -220,49 +232,64 @@ class Level:
                 self.groups_manager_process_unit_removed(unit_uid=unit_uid)
 
     def update_timer(self, delta_time: float):
+        """Обновляет таймер уровня и пересчитывает активацию юнитов."""
         self.timer += delta_time
         self.recalc_units_activation()
 
     def get_active_units(self) -> list[Unit]:
+        """Возвращает список активных юнитов на уровне."""
         return list(self.units_active.values())
 
     def get_planned_units(self) -> list[Unit]:
+        """Возвращает список запланированных юнитов на уровне."""
         return list(self.units_planned.values())
 
     def get_wasted_units(self) -> list[Unit]:
+        """Возвращает список потраченных юнитов на уровне."""
         return list(self.units_wasted.values())
 
     def get_level_time(self) -> float:
+        """Возвращает текущее время уровня."""
         return self.time
 
     def get_level_timer(self) -> int:
+        """Возвращает таймер уровня."""
         return self.timer
 
     def get_level_score(self) -> float:
+        """Возвращает счёт уровня."""
         return self.score
 
     def get_level_goal(self) -> int:
+        """Возвращает цель уровня."""
         return self.goal
 
     def get_level_act_number(self) -> int:
+        """Возвращает номер акта."""
         return self.act_number
 
     def get_level_number(self) -> int:
+        """Возвращает номер уровня в акте."""
         return self.level_number
 
     def get_level_name(self) -> str:
+        """Возвращает имя уровня."""
         return self.name
 
     def get_level_description(self) -> str:
+        """Возвращает описание уровня."""
         return self.description
 
     def groups_manager_process_unit_placed(self, unit_uid: str) -> None:
+        """Обрабатывает размещение юнита в менеджере групп."""
         self.group_manager.process_unit_placed(unit_uid, list(self.units_active.keys()))
 
     def groups_manager_process_unit_removed(self, unit_uid: str) -> None:
+        """Обрабатывает удаление юнита в менеджере групп."""
         self.group_manager.process_unit_removed(unit_uid)
 
     def get_simple_name(self) -> str:
+        """Возвращает простое имя уровня в формате 'акт_уровень'."""
         return f"{self.act_number}_{self.level_number}"
 
     def __str__(self):

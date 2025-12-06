@@ -6,6 +6,7 @@ if TYPE_CHECKING:
 
 
 def draw_unit(unit: Unit, x: float, y: float) -> None:
+    """Создаёт и возвращает спрайт юнита для отрисовки в заданной позиции."""
     traits = unit.get_traits()
     traits_simple = {}
     for trait_name, trait in traits.items():

@@ -34,7 +34,8 @@ class LogSystem:
     def _init(self, log_file=None, log_to_console=True, log_levels=None):
         """Инициализация логгера, выполняется только один раз."""
         self.logger = logging.getLogger("Clusters")
-        self.logger.setLevel(logging.DEBUG)  # Общий уровень логирования
+        # self.logger.setLevel(logging.DEBUG)  # Общий уровень логирования
+        self.logger.setLevel(logging.CRITICAL)  # Общий уровень логирования
         self.log_levels = log_levels
         self.uid = core.utils().uid()
         self.system_name = "LogSystem"
