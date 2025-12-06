@@ -64,7 +64,7 @@ class Group:
         return unit_uid in self.units_with_neighbors
 
     def get_list_of_units_uids(self) -> list[str]:
-        return list(self.units_with_neighbors.values())
+        return list(self.units_with_neighbors.keys())
 
     def get_dict_of_units_neighbors(self) -> dict[str, set[str]]:
         return self.units_with_neighbors
