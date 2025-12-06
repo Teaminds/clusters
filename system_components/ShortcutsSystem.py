@@ -1,4 +1,3 @@
-import sys
 from system_components.Core_Builded import core
 
 

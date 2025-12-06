@@ -1,4 +1,3 @@
-from os import system
 from system_components.Core_Builded import core
 from typing import Any, Dict, List, Optional, Type
 from weakref import WeakValueDictionary
@@ -16,10 +15,10 @@ class ObjectRegistry:
     """
 
     uid: str
-    # objects: WeakValueDictionary[str, object] # {uid: объект}
+    # objects: WeakValueDictionary[str, object]  # {uid: объект}
     objects: Dict[
         str, object
-    ]  # NB! {uid: объект} на время отладки это обычный словарь, чтобы проще было отлавливать ошибки
+    ]  # NB! {uid: объект} на время отладки это обычный словарь, чтобы проще было отлавливать ошибки. Плюс в Кластерах не так много обхъектов, можно и постоянно так держать.
     system_name_to_uid_registry: Dict[str, str]
     system_name: str
 
@@ -30,7 +29,7 @@ class ObjectRegistry:
         # )  # {uid: объект}
         self.objects: Dict[str, object] = (
             {}
-        )  # NB! {uid: объект} на время отладки это обычный словарь, чтобы проще было отлавливать ошибки
+        )  # NB! {uid: объект} на время отладки это обычный словарь, чтобы проще было отлавливать ошибки. Плюс в Кластерах не так много обхъектов, можно и постоянно так держать.
         self.system_name = "ObjectsRegistry"
         self.system_name_to_uid_registry = {}  # {system_name: uid}
         self.register(obj=self)

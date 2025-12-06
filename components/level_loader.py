@@ -5,14 +5,18 @@ from system_components.Core_Builded import core
 
 
 class LevelLoader:
+    """Загрузчик уровней из файлов конфигураций."""
+
     @staticmethod
     def load_level_config(simple_name: str) -> dict:
+        """Загружает конфигурацию уровня из файла по простому имени."""
         with open(f"levels/{simple_name}.json", encoding="utf-8") as f:
             level_config = json.load(f)
         return level_config
 
     @staticmethod
     def load_simple_levels_list() -> list:
+        """Загружает список простых имён уровней."""
         levels_info = LevelLoader.load_levels_info_list()
         simple_levels_list = []
         for act_number, levels_in_act in levels_info.items():
@@ -22,6 +26,7 @@ class LevelLoader:
 
     @staticmethod
     def load_levels_info_list() -> dict:
+        """Загружает информацию обо всех уровнях из файлов конфигураций."""
         import os
 
         levels = {}
@@ -53,12 +58,14 @@ class LevelLoader:
 
     @staticmethod
     def load_level(simple_name: str) -> Level:
+        """Загружает уровень по простому имени."""
         level_config = LevelLoader.load_level_config(simple_name=simple_name)
         level = LevelFactory.create_level_from_config(level_config=level_config)
         return level
 
     @staticmethod
     def load_next_level(simple_name: str) -> Level | None:
+        """Загружает следующий уровень после заданного простого имени."""
         levels_simple_list = LevelLoader.load_simple_levels_list()
         next_level_simple_name = core.utils().get_next_item_of_list(
             levels_simple_list,
