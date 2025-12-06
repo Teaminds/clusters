@@ -306,14 +306,14 @@ class LevelFactory:
         if "x" in unit_config:
             if not isinstance(unit_config["x"], (int, float)):
                 raise ValueError("'x' must be a number")
-            if unit_config["x"] < 0 or unit_config["x"] > 1280:
-                raise ValueError(f"'x' must be between 0 and 1")
+            if unit_config["x"] < 0 or unit_config["x"] > 1200:
+                raise ValueError(f"'x' must be between 0 and 1200")
 
         if "y" in unit_config:
             if not isinstance(unit_config["y"], (int, float)):
                 raise ValueError("'y' must be a number")
             if unit_config["y"] < 0 or unit_config["y"] > 720:
-                raise ValueError(f"'y' must be between 0 and 1")
+                raise ValueError(f"'y' must be between 0 and 720")
 
         if "body_radius" in unit_config:
             if not isinstance(unit_config["body_radius"], (int, float)):
@@ -324,8 +324,8 @@ class LevelFactory:
         if "aura_radius" in unit_config:
             if not isinstance(unit_config["aura_radius"], (int, float)):
                 raise ValueError("'aura_radius' must be a number")
-            if unit_config["aura_radius"] < 0 or unit_config["aura_radius"] > 1280:
-                raise ValueError("'aura_radius' must be between 0 and 1280")
+            if unit_config["aura_radius"] < 0 or unit_config["aura_radius"] > 1200:
+                raise ValueError("'aura_radius' must be between 0 and 1200")
             if "body_radius" not in unit_config:
                 raise ValueError(
                     "'body_radius' must be defined if 'aura_radius' is defined"
@@ -379,9 +379,9 @@ class LevelFactory:
         if "life_time" == 0:
             prepared_config["life_time"] = float("+inf")
         if "x" not in prepared_config:
-            prepared_config["x"] = uniform(0, 1280)
+            prepared_config["x"] = uniform(50, 1100)
         if "y" not in prepared_config:
-            prepared_config["y"] = uniform(0, 720)
+            prepared_config["y"] = uniform(50, 650)
         if "body_radius" not in prepared_config:
             prepared_config["body_radius"] = float(30)
         if "aura_radius" not in prepared_config:
