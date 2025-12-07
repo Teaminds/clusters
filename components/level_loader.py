@@ -2,6 +2,7 @@ import json
 from components.level import Level
 from components.level_factory import LevelFactory
 from system_components.Core_Builded import core
+from system_components.ResourceLoader import resource_path
 
 
 class LevelLoader:
@@ -10,7 +11,8 @@ class LevelLoader:
     @staticmethod
     def load_level_config(simple_name: str) -> dict:
         """Загружает конфигурацию уровня из файла по простому имени."""
-        with open(f"levels/{simple_name}.json", encoding="utf-8") as f:
+        found_path = resource_path(f"levels/{simple_name}.json")
+        with open(found_path, encoding="utf-8") as f:
             level_config = json.load(f)
         return level_config
 
@@ -30,9 +32,10 @@ class LevelLoader:
         import os
 
         levels = {}
-        for filename in os.listdir("levels"):
+        levels_path = resource_path("levels")
+        for filename in os.listdir(levels_path):
             if filename.endswith(".json"):
-                with open(os.path.join("levels", filename), encoding="utf-8") as f:
+                with open(os.path.join(levels_path, filename), encoding="utf-8") as f:
                     level_config = json.load(f)
                     if (
                         "name" in level_config
