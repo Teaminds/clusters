@@ -224,6 +224,7 @@ class Level:
             if (
                 unit.is_active() is True
                 and self.time > unit.income_time + unit.life_time
+                and unit.life_time not in [0, float("+inf")]
             ):
                 self.units_wasted[unit.get_uid()] = unit
                 del self.units_active[unit.get_uid()]
