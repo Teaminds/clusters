@@ -1,6 +1,6 @@
 {
-    "name": "First step",
-    "description": "This is a test level",
+    "name": "Первый шаг",
+    "description": "Обучающий уровень, где вы познакомитесь с основами игры.",
     "level_number": 1,
     "act_number": 1,
     "units": [
@@ -56,27 +56,27 @@
     "default_traits_pool": {
         "trait_b": {
             "0": {
-                "income": 1.0
+                "income": 0.0
             }
         },
         "trait_c": {
             "0": {
-                "income": 1.0
+                "income": 0.0
             }
         },
         "trait_d": {
             "0": {
-                "income": 1.0
+                "income": 0.0
             }
         },
         "trait_e": {
             "0": {
-                "income": 1.0
+                "income": 0.0
             }
         }
     },
-    "timer": 30,
-    "goal_score": 20,
+    "timer": 20,
+    "goal_score": 25,
     "income": 0.0,
     "starting_score": 0.0
 }
