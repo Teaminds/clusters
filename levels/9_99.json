@@ -53,7 +53,7 @@
         {}
     ],
     "timer": 240,
-    "goal_score": 10000,
+    "goal_score": 5000,
     "income": 0.0,
     "starting_score": 0.0
 }
