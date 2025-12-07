@@ -1,6 +1,8 @@
 import arcade
 from system_components.Core_Builded import core
 
+APP_VERSION = "0.1.0"
+
 
 def _initialize_core():
     """Инициализация core из системных компонентов. Порядок имеет значение!"""
