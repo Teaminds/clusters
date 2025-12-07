@@ -1,0 +1,612 @@
+{
+    "name": "5x5x5x5x5=3125... но влезло только 25",
+    "description": "Но мы сейчас покажем только 25",
+    "act_number": 1,
+    "level_number": 5,
+    "units": [
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "0"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "0"
+                },
+                "trait_e": {
+                    "value": "0"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 82,
+            "y": 58
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "1"
+                },
+                "trait_c": {
+                    "value": "1"
+                },
+                "trait_d": {
+                    "value": "1"
+                },
+                "trait_e": {
+                    "value": "1"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 76,
+            "y": 196
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "2"
+                },
+                "trait_d": {
+                    "value": "2"
+                },
+                "trait_e": {
+                    "value": "2"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 85,
+            "y": 331
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "3"
+                },
+                "trait_c": {
+                    "value": "3"
+                },
+                "trait_d": {
+                    "value": "3"
+                },
+                "trait_e": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 81,
+            "y": 462
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "4"
+                },
+                "trait_c": {
+                    "value": "4"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 78,
+            "y": 603
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "0"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "0"
+                },
+                "trait_e": {
+                    "value": "0"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 312,
+            "y": 64
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "1"
+                },
+                "trait_d": {
+                    "value": "1"
+                },
+                "trait_e": {
+                    "value": "1"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 319,
+            "y": 192
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "3"
+                },
+                "trait_d": {
+                    "value": "2"
+                },
+                "trait_e": {
+                    "value": "2"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 307,
+            "y": 338
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "3"
+                },
+                "trait_c": {
+                    "value": "3"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 322,
+            "y": 467
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "1"
+                },
+                "trait_b": {
+                    "value": "4"
+                },
+                "trait_c": {
+                    "value": "4"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "0"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 315,
+            "y": 607
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "2"
+                },
+                "trait_b": {
+                    "value": "0"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "0"
+                },
+                "trait_e": {
+                    "value": "0"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 556,
+            "y": 59
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "2"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "3"
+                },
+                "trait_d": {
+                    "value": "1"
+                },
+                "trait_e": {
+                    "value": "1"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 545,
+            "y": 197
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "2"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "3"
+                },
+                "trait_d": {
+                    "value": "2"
+                },
+                "trait_e": {
+                    "value": "1"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 552,
+            "y": 333
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "2"
+                },
+                "trait_b": {
+                    "value": "4"
+                },
+                "trait_c": {
+                    "value": "3"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 544,
+            "y": 468
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "2"
+                },
+                "trait_b": {
+                    "value": "4"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "0"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 551,
+            "y": 602
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "0"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "0"
+                },
+                "trait_e": {
+                    "value": "0"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 782,
+            "y": 62
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "1"
+                },
+                "trait_e": {
+                    "value": "1"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 790,
+            "y": 198
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "3"
+                },
+                "trait_d": {
+                    "value": "2"
+                },
+                "trait_e": {
+                    "value": "2"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 778,
+            "y": 329
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "0"
+                },
+                "trait_c": {
+                    "value": "3"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 787,
+            "y": 468
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "4"
+                },
+                "trait_c": {
+                    "value": "3"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "0"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 793,
+            "y": 599
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "0"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "0"
+                },
+                "trait_e": {
+                    "value": "0"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 1016,
+            "y": 61
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "1"
+                },
+                "trait_c": {
+                    "value": "1"
+                },
+                "trait_d": {
+                    "value": "1"
+                },
+                "trait_e": {
+                    "value": "1"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 1024,
+            "y": 189
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "2"
+                },
+                "trait_d": {
+                    "value": "2"
+                },
+                "trait_e": {
+                    "value": "2"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 1019,
+            "y": 330
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "3"
+                },
+                "trait_c": {
+                    "value": "3"
+                },
+                "trait_d": {
+                    "value": "3"
+                },
+                "trait_e": {
+                    "value": "3"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 1027,
+            "y": 468
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "4"
+                },
+                "trait_c": {
+                    "value": "4"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 1018,
+            "y": 605
+        }
+    ],
+    "timer": 60,
+    "goal_score": 800,
+    "income": 0.0,
+    "starting_score": 0.0
+}
