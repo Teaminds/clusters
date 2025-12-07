@@ -1,0 +1,372 @@
+{
+    "name": "Иногда они появляются, иногда исчезают",
+    "description": "",
+    "act_number": 1,
+    "level_number": 7,
+    "units": [
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 550,
+            "y": 230
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 450,
+            "y": 330
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 550,
+            "y": 330
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 650,
+            "y": 330
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "3"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 0,
+            "x": 550,
+            "y": 430
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 10,
+            "x": 140,
+            "y": 120
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 20,
+            "x": 180,
+            "y": 240
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 30,
+            "x": 90,
+            "y": 300
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 40,
+            "x": 220,
+            "y": 380
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "0"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 0,
+            "life_time": 50,
+            "x": 130,
+            "y": 450
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 15,
+            "life_time": 0,
+            "x": 980,
+            "y": 120
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 25,
+            "life_time": 0,
+            "x": 920,
+            "y": 240
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 35,
+            "life_time": 0,
+            "x": 1030,
+            "y": 300
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 45,
+            "life_time": 0,
+            "x": 880,
+            "y": 380
+        },
+        {
+            "traits": {
+                "trait_a": {
+                    "value": "4"
+                },
+                "trait_b": {
+                    "value": "2"
+                },
+                "trait_c": {
+                    "value": "0"
+                },
+                "trait_d": {
+                    "value": "4"
+                },
+                "trait_e": {
+                    "value": "4"
+                }
+            },
+            "draggedable": true,
+            "income_time": 55,
+            "life_time": 0,
+            "x": 1000,
+            "y": 450
+        }
+    ],
+    "timer": 60,
+    "goal_score": 250,
+    "income": 0.0,
+    "starting_score": 0.0
+}
