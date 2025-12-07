@@ -1,3 +1,4 @@
+from re import L
 import arcade
 from arcade.gui import (
     UIAnchorLayout,
@@ -38,6 +39,7 @@ class EndOfLevelView(UIView):
             "lose": {"text": "💀 Поражение", "color": arcade.color.RED},
         }
         level = LevelLoader.load_level(current_level.get_simple_name())
+        self.current_level_simple_name = current_level.get_simple_name()
         next_level = LevelLoader.load_next_level(current_level.get_simple_name())
         center = UIButtonRow(vertical=True, size_hint=(1, 0.3))
         center.add(
@@ -59,6 +61,7 @@ class EndOfLevelView(UIView):
         next_level = LevelLoader.load_next_level(current_level.get_simple_name())
         if isinstance(next_level, Level):
             center.add_button("Следующий уровень", size_hint=(0.3, 0.1), align="center")
+        center.add_button("В меню", size_hint=(0.3, 0.1), align="center")
 
         root.add(center, anchor_x="center", anchor_y="center")
 
@@ -73,3 +76,20 @@ class EndOfLevelView(UIView):
                 arcade.get_window().show_view(LevelView(level=level))
             elif event.action == "Следующий уровень":
                 arcade.get_window().show_view(LevelView(level=next_level))
+            elif event.action == "В меню":
+                from ui.level_select_view import LevelSelectView
+
+                arcade.get_window().show_view(LevelSelectView())
+
+    def on_key_release(self, symbol, modifiers):
+        """Обрабатывает нажатия клавиш."""
+        if symbol == arcade.key.R:
+            from ui.level_view import LevelView
+
+            level = LevelLoader.load_level(self.current_level_simple_name)
+            arcade.get_window().show_view(LevelView(level=level))
+        elif symbol == arcade.key.ESCAPE:
+            from ui.level_select_view import LevelSelectView
+
+            arcade.get_window().show_view(LevelSelectView())
+        return super().on_key_release(symbol, modifiers)
