@@ -117,15 +117,15 @@ class Level:
 
     def calculate_trait_income(
         self,
-        trait_base_income: float,
-        unique_count_in_group: int,
-        unique_count_in_level: int,
-        group_units_count: int,
-        all_units_count: int,
-        weather_effect: float = 1.0,
-        zone_effect: float = 1.0,
-        alpha: float = 5.0,
-        beta: float = 1.0,
+        trait_base_income: float,  # базовый доход признака
+        unique_count_in_group: int,  # количество уникальных вариантов признака в группе
+        unique_count_in_level: int,  # количество уникальных вариантов признака на уровне (на поле)
+        group_units_count: int,  # количество юнитов в группе
+        all_units_count: int,  # количество юнитов на уровне (на поле)
+        weather_effect: float = 1.0,  # эффект погоды
+        zone_effect: float = 1.0,  # эффект зоны
+        alpha: float = 0.7,  # степень влияния гомогенности группы (не больше 1)
+        beta: float = 0.7,  # степень влияния размера группы (не больше 1)
     ) -> float:
         """
         Расчёт дохода от одного признака в группе юнитов.
@@ -151,10 +151,11 @@ class Level:
         group_size_ratio = (
             group_units_count / all_units_count
         )  # Размер группы от 0 до 1
+
         result = (
             trait_base_income
-            * (homogeneity * alpha)
-            * (group_size_ratio * beta)
+            * (homogeneity**alpha)
+            * (group_size_ratio**beta)
             * weather_effect
             * zone_effect
         )
@@ -224,6 +225,7 @@ class Level:
             if (
                 unit.is_active() is True
                 and self.time > unit.income_time + unit.life_time
+                and unit.life_time not in [0, float("+inf")]
             ):
                 self.units_wasted[unit.get_uid()] = unit
                 del self.units_active[unit.get_uid()]
